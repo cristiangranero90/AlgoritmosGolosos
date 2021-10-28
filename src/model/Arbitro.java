@@ -9,4 +9,21 @@ public class Arbitro {
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
 	}
+
+	public Integer getNumeroDeArbitro() {
+		return numeroDeArbitro;
+	}
+
+	public void setNumeroDeArbitro(Integer numeroDeArbitro) {
+		this.numeroDeArbitro = numeroDeArbitro;
+	}
+
+	public String getNombreDeArbitro() {
+		return nombreDeArbitro;
+	}
+
+	public void setNombreDeArbitro(String nombreDeArbitro) {
+		this.nombreDeArbitro = nombreDeArbitro;
+	}
+	
 }
