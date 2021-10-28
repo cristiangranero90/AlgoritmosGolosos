@@ -11,4 +11,29 @@ public class Partido {
 		numeroDeFecha = partido;
 		arbitro = arbitroSeleccionado;
 	}
+
+	public Club[] getEncuentro() {
+		return encuentro;
+	}
+
+	public void setEncuentro(Club[] encuentro) {
+		this.encuentro = encuentro;
+	}
+
+	public Integer getNumeroDeFecha() {
+		return numeroDeFecha;
+	}
+
+	public void setNumeroDeFecha(Integer numeroDeFecha) {
+		this.numeroDeFecha = numeroDeFecha;
+	}
+
+	public Arbitro getArbitro() {
+		return arbitro;
+	}
+
+	public void setArbitro(Arbitro arbitro) {
+		this.arbitro = arbitro;
+	}
+	
 }
