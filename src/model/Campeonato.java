@@ -9,4 +9,9 @@ public class Campeonato {
 	public Campeonato() {
 		fechas = new ArrayList<>();
 	}
+
+	public ArrayList<Fecha> getFechas() {
+		return fechas;
+	}
+	
 }
