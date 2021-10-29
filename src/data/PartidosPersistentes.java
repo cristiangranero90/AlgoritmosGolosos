@@ -1,4 +1,4 @@
-package persistencia;
+package data;
 
 public class PartidosPersistentes {
 
