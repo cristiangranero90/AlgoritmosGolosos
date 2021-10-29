@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 public class Club {
 	
-	String nombre;
-	HashMap<Arbitro, Integer> arbitros;
+	private String nombre;
+	private HashMap<Arbitro, Integer> arbitros;
 	
 	public Club(String nombre){
-		this.nombre = nombre;
+		setNombre(nombre);
 		arbitros = new HashMap<>();
 	}
 
@@ -17,7 +17,12 @@ public class Club {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if (nombre != null) {
+			this.nombre = nombre;
+		}
+		else {
+			throw new RuntimeException("No se ha ingresado un nombre. ");
+		}		
 	}
 	
 	public void agregarArbitro(Arbitro nuevo) {
@@ -30,7 +35,7 @@ public class Club {
 	}
 
 	private boolean existeArbitro(Arbitro nuevo) {
-		// TODO Auto-generated method stub
+		
 		return arbitros.containsKey(nuevo.getNombreDeArbitro());
 	}
 	

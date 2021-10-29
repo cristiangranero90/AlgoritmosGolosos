@@ -25,7 +25,12 @@ public class Partido {
 	}
 
 	public void setNumeroDeFecha(Integer numeroDeFecha) {
-		this.numeroDeFecha = numeroDeFecha;
+		if (numeroDeFecha != null) {
+			this.numeroDeFecha = numeroDeFecha;
+		}
+		else {
+			throw new RuntimeException("Numero de partido invalido, no puede estar vacio o ser cero. ");
+		}		
 	}
 
 	public Arbitro getArbitro() {
