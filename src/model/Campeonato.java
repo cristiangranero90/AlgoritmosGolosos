@@ -6,4 +6,7 @@ public class Campeonato {
 	
 	private ArrayList<Fecha> fechas;
 
+	public Campeonato() {
+		fechas = new ArrayList<>();
+	}
 }
