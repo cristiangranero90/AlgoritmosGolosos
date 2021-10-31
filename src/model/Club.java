@@ -36,7 +36,7 @@ public class Club {
 
 	private boolean existeArbitro(Arbitro nuevo) {
 		
-		return arbitros.containsKey(nuevo.getNombreDeArbitro());
+		return arbitros.containsKey(nuevo);
 	}
 	
 	
