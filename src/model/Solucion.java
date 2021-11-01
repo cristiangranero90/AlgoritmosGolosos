@@ -1,29 +1,25 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Solucion {
 
-	private ArrayList<Fecha> fechas;
+	private Campeonato instanciaCampeonato;
+	private HashMap<Arbitro, Integer> asignacionArbitros;
 	
-	public Solucion(ArrayList<Fecha> fechas) {
-		setFechas(fechas);
+	Solucion(Campeonato campeonato){
+		setInstanciaCampeonato(campeonato);
 	}
 
-	public ArrayList<Fecha> getFechas() {
-		return fechas;
-	}
-
-	public void setFechas(ArrayList<Fecha> fechas) {
-		if (fechas != null) {
-			this.fechas = fechas;
+	public void setInstanciaCampeonato(Campeonato campeonato) {
+		if (campeonato != null) {
+			this.instanciaCampeonato = campeonato;
 		}
 		else {
-			throw new RuntimeException("Error en las fechas. ");
-		}
-		
+			throw new RuntimeException("El campeonato recibido por parametro esta vacion. ");
+		}		
 	}
-	
 	
 	
 	
