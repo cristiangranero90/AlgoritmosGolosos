@@ -18,18 +18,21 @@ public class Solver {
 	}
 	
 	public void resolver() {
-		//TODO null
-		
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
-		//ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
 		
 		for (Fecha unaFecha : fechasDisponibles) {	
 			int indiceArbitros = 0;
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
 			for (Partido partidoActual : unaFecha.getPartidos()) {
-				partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
-				indiceArbitros++;
+				if (indiceArbitros > todosLosArbitros.size()) {
+					indiceArbitros = 0;
+					partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
+				}
+				else {
+					partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
+					indiceArbitros++;
+				}				
 			}
 		}		
 	}	
