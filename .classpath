@@ -19,5 +19,7 @@
 	<classpathentry kind="lib" path="/snap/eclipse/48/plugins/com.ibm.icu_64.2.0.v20190507-1337.jar" sourcepath="/snap/eclipse/48/plugins/com.ibm.icu_64.2.0.v20190507-1337.jar"/>
 	<classpathentry kind="lib" path="/snap/eclipse/48/plugins/org.eclipse.ui.forms_3.8.200.v20191114-0830.jar" sourcepath="/snap/eclipse/48/plugins/org.eclipse.ui.forms_3.8.200.v20191114-0830.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Lorenzo/Documents/javaeclipse/PROGRAMACION 3/tp 3/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="src/data/torneo.json"/>
+	<classpathentry kind="lib" path="gson-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
