@@ -2,8 +2,9 @@ package model;
 
 public class Arbitro {
 
-	Integer numeroDeArbitro;
-	String nombreDeArbitro;
+	private Integer numeroDeArbitro;
+	private String nombreDeArbitro;
+	private int aparicion;
 	
 	public Arbitro(int arbitroNumero, String nombre) {
 		numeroDeArbitro = arbitroNumero;
@@ -29,5 +30,12 @@ public class Arbitro {
 	public void setNombreDeArbitro(String nombreDeArbitro) {
 		this.nombreDeArbitro = nombreDeArbitro;
 	}
+	public int getAparicion() {
+		return aparicion;
+	}
+	public void setAparicion(int aparicion) {
+		this.aparicion = aparicion;
+	}
+	
 	
 }

@@ -1,35 +1,45 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-
-import sun.util.resources.Bundles.Strategy;
 
 public class Solver {
 	
 	private Campeonato instanciaCampeonato;
-	private HashMap<Arbitro, HashMap<Club, Integer>> asignacionArbitros;
-	private Strategy estrategiaActual;
+	private HashMap<Arbitro, Integer> cantidadAparicionesArbitros;
+	private Comparator<Arbitro> estrategiaActual;
 	
-	Solver(Campeonato campeonato, Strategy estrategia){
+	Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
 		setInstanciaCampeonato(campeonato);
-		asignacionArbitros = new HashMap<Arbitro, HashMap<Club, Integer>>();
+		cantidadAparicionesArbitros = new HashMap<Arbitro, Integer>();
 		estrategiaActual = estrategia;
 	}
 	
-	public Solucion resolver() {
+	public void resolver() {
+		//TODO null
+		
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
+		//ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
 		
-		for (Fecha unaFecha : fechasDisponibles) {
-			for (Partido partidosActuales : unaFecha.getPartidos()) {
-				
+		for (Fecha unaFecha : fechasDisponibles) {	
+			int indiceArbitros = 0;
+			todosLosArbitros = ordenarArbitros(todosLosArbitros);
+			for (Partido partidoActual : unaFecha.getPartidos()) {
+				partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
+				indiceArbitros++;
 			}
-		}
-		
-		return null;
+		}		
+	}	
+
+	public ArrayList<Arbitro> ordenarArbitros(ArrayList<Arbitro> arbitrosDisponibles) {
+		ArrayList<Arbitro> ret = arbitrosDisponibles;
+		Collections.sort(ret, estrategiaActual);		
+		return ret;
 	}
-	
+
 	public void setInstanciaCampeonato(Campeonato campeonato) {
 		if (campeonato != null) {
 			this.instanciaCampeonato = campeonato;
@@ -38,12 +48,25 @@ public class Solver {
 			throw new RuntimeException("El campeonato recibido por parametro esta vacion. ");
 		}		
 	}
+	public void agregarAparicionesArbitro(Arbitro nuevoArbitro) {
+		if (nuevoArbitro == null) {
+			throw new RuntimeException("El arbitro ingresado no existe. ");
+		}
+		else {
+			if (getAsignacionArbitros().containsKey(nuevoArbitro)) {
+				getAsignacionArbitros().replace(nuevoArbitro, getAsignacionArbitros().get(nuevoArbitro) + 1);
+			}
+			else {
+				getAsignacionArbitros().put(nuevoArbitro, 1);
+			}
+		}
+	}
 	
 	public Campeonato getInstanciaCampeonato() {
 		return instanciaCampeonato;
 	}
-	public HashMap<Arbitro, HashMap<Club, Integer>> getAsignacionArbitros() {
-		return asignacionArbitros;
+	public HashMap<Arbitro, Integer> getAsignacionArbitros() {
+		return cantidadAparicionesArbitros;
 	}
 	
 	
