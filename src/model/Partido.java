@@ -3,42 +3,37 @@ package model;
 public class Partido {
 	
 	private Club[] encuentro;
-	private Integer numeroDeFecha;
 	private Arbitro arbitro;
 	
-	public Partido(int partido, Arbitro arbitroSeleccionado) {
+	public Partido(Club uno, Club dos) {
 		encuentro = new Club[1];
-		numeroDeFecha = partido;
-		arbitro = arbitroSeleccionado;
+		encuentro[0] = uno;
+		encuentro[1] = dos;
+	}
+	
+	public Club getClub(int indice) throws Exception {
+		if (indice == 0 || indice == 1) {
+			return getEncuentro()[indice];
+		}
+		else {
+			throw new RuntimeException("El indice ingresado para club, es invalido. ");
+		}
 	}
 
 	public Club[] getEncuentro() {
-		return encuentro;
+		return this.encuentro;
 	}
-
-	public void setEncuentro(Club[] encuentro) {
-		this.encuentro = encuentro;
-	}
-
-	public Integer getNumeroDeFecha() {
-		return numeroDeFecha;
-	}
-
-	public void setNumeroDeFecha(Integer numeroDeFecha) {
-		if (numeroDeFecha != null) {
-			this.numeroDeFecha = numeroDeFecha;
+	
+	public void setArbitro(Arbitro nuevo) {
+		if (arbitro != null) {
+			this.arbitro = nuevo;
 		}
 		else {
-			throw new RuntimeException("Numero de partido invalido, no puede estar vacio o ser cero. ");
-		}		
+			throw new RuntimeException("El arbitro ingresado es invalido. ");
+		}
 	}
 
 	public Arbitro getArbitro() {
-		return arbitro;
-	}
-
-	public void setArbitro(Arbitro arbitro) {
-		this.arbitro = arbitro;
-	}
-	
+		return this.arbitro;
+	}	
 }

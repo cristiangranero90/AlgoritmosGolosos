@@ -4,28 +4,36 @@ import java.util.ArrayList;
 
 public class Solucion {
 
-	private ArrayList<Fecha> fechas;
+	private ArrayList<Arbitro> arbitrosSeleccionados;
 	
-	public Solucion(ArrayList<Fecha> fechas) {
-		setFechas(fechas);
+	public Solucion() {
+		arbitrosSeleccionados = new ArrayList<>();
 	}
-
-	public ArrayList<Fecha> getFechas() {
-		return fechas;
+	
+	public void agregarArbitroSolucion(Arbitro nuevoarbitro) {
+		getArbitrosSeleccionados().add(nuevoarbitro);
 	}
-
-	public void setFechas(ArrayList<Fecha> fechas) {
-		if (fechas != null) {
-			this.fechas = fechas;
+	
+	public Arbitro dameArbitro(int indice) {
+		if (indice < arbitrosSeleccionados.size()) {
+			return arbitrosSeleccionados.get(indice);
 		}
 		else {
-			throw new RuntimeException("Error en las fechas. ");
+			throw new RuntimeException("El indice ingresado es invalido. ");
 		}
-		
 	}
-	
-	
-	
-	
+
+	public ArrayList<Arbitro> getArbitrosSeleccionados() {
+		return arbitrosSeleccionados;
+	}
+
+	public void setArbitroSeleccionado(ArrayList<Arbitro> arbitros) {
+		if (arbitros != null) {
+			this.arbitrosSeleccionados = arbitros;
+		}
+		else {
+			throw new RuntimeException("Los arbitros ingresados no existen. ");
+		}
+	}	
 	
 }

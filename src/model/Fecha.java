@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Fecha {
+public class Fecha  {
 	
 	private ArrayList<Partido> partidos;
 	private Integer numeroDeFecha;
@@ -11,9 +11,17 @@ public class Fecha {
 		partidos = new ArrayList<>();
 		setNumeroDeFecha(numeroDePartido);
 	}
+	
+	public boolean agregarPartido(Partido nuevo) {
+		return getPartidos().add(nuevo);
+	}
+	
+	public int cantidadPartidos() {
+		return getPartidos().size();
+	}
 
 	public ArrayList<Partido> getPartidos() {
-		return partidos;
+		return (ArrayList<Partido>) partidos;
 	}
 
 	public Integer getNumeroDeFecha() {
@@ -29,7 +37,6 @@ public class Fecha {
 		}
 		
 		
-	}
-	
+	}	
 
 }
