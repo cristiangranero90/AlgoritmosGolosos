@@ -9,10 +9,12 @@ public class Arbitro {
 	public Arbitro(int arbitroNumero, String nombre) {
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
+		aparicion = 0;
 	}
-	public Arbitro() {
-		numeroDeArbitro = -1;
+	public Arbitro(int arbitroNumero) {
+		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = "";
+		aparicion = 0;
 	}
 
 	public Integer getNumeroDeArbitro() {
