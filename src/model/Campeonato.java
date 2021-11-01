@@ -30,9 +30,10 @@ public class Campeonato {
 		return getFechas().contains(otraFecha);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Arbitro> getArbitrosDisponibles() {
 		if (this.arbitrosDisponibles != null) {
-			return (ArrayList<Arbitro>) arbitrosDisponibles;
+			return (ArrayList<Arbitro>) arbitrosDisponibles.clone();
 		}
 		else {
 			throw new RuntimeException("No existen arbitros o no hay arbitros cargados. ");
