@@ -13,9 +13,10 @@ public class Campeonato {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Fecha> getFechas() {
 		if (this.fechas != null) {
-			return (ArrayList<Fecha>) fechas;
+			return (ArrayList<Fecha>) fechas.clone();
 		}
 		else {
 			throw new RuntimeException("No existen fechas o no hay fechas cargadas. ");

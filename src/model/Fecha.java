@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Fecha {
+public class Fecha  {
 	
 	private ArrayList<Partido> partidos;
 	private Integer numeroDeFecha;
@@ -12,8 +12,9 @@ public class Fecha {
 		setNumeroDeFecha(numeroDePartido);
 	}
 
+	@SuppressWarnings("unchecked")
 	public ArrayList<Partido> getPartidos() {
-		return partidos;
+		return (ArrayList<Partido>) partidos.clone();
 	}
 
 	public Integer getNumeroDeFecha() {
@@ -29,7 +30,6 @@ public class Fecha {
 		}
 		
 		
-	}
-	
+	}	
 
 }
