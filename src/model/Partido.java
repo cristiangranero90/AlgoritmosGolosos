@@ -20,10 +20,5 @@ public class Partido {
 
 	public Arbitro getArbitro() {
 		return arbitro;
-	}
-
-	public void setArbitro(Arbitro arbitro) {
-		this.arbitro = arbitro;
-	}
-	
+	}	
 }
