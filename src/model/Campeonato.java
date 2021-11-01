@@ -12,10 +12,18 @@ public class Campeonato {
 		arbitrosDisponibles = new ArrayList<>();
 	}
 	
-	@SuppressWarnings("unchecked")
+	public void asignarSolucion(Solucion solucionGenerada) {
+		int indice = 0;
+		for(Fecha fecha : getFechas()) {
+			for (Partido partidoActual : fecha.getPartidos()) {
+				partidoActual.setArbitro(solucionGenerada.getArbitrosSeleccionados().get(indice));
+			}
+		}
+	}	
+	
 	public ArrayList<Fecha> getFechas() {
 		if (this.fechas != null) {
-			return (ArrayList<Fecha>) fechas.clone();
+			return (ArrayList<Fecha>) fechas;
 		}
 		else {
 			throw new RuntimeException("No hay fechas cargadas. ");
@@ -30,10 +38,9 @@ public class Campeonato {
 		return getFechas().contains(otraFecha);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public ArrayList<Arbitro> getArbitrosDisponibles() {
 		if (this.arbitrosDisponibles != null) {
-			return (ArrayList<Arbitro>) arbitrosDisponibles.clone();
+			return (ArrayList<Arbitro>) arbitrosDisponibles;
 		}
 		else {
 			throw new RuntimeException("No existe arbitro o no hay arbitros cargados. ");

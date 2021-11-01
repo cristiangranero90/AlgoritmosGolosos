@@ -20,9 +20,8 @@ public class Fecha  {
 		return getPartidos().size();
 	}
 
-	@SuppressWarnings("unchecked")
 	public ArrayList<Partido> getPartidos() {
-		return (ArrayList<Partido>) partidos.clone();
+		return (ArrayList<Partido>) partidos;
 	}
 
 	public Integer getNumeroDeFecha() {

@@ -13,6 +13,15 @@ public class Solucion {
 	public void agregarArbitroSolucion(Arbitro nuevoarbitro) {
 		getArbitrosSeleccionados().add(nuevoarbitro);
 	}
+	
+	public Arbitro dameArbitro(int indice) {
+		if (indice < arbitrosSeleccionados.size()) {
+			return arbitrosSeleccionados.get(indice);
+		}
+		else {
+			throw new RuntimeException("El indice ingresado es invalido. ");
+		}
+	}
 
 	public ArrayList<Arbitro> getArbitrosSeleccionados() {
 		return arbitrosSeleccionados;
