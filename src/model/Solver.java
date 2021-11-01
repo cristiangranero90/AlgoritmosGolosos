@@ -17,24 +17,29 @@ public class Solver {
 		estrategiaActual = estrategia;
 	}
 	
-	public void resolver() {
+	public Solucion resolver() {
+		Solucion ret = new Solucion();
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
 		
 		for (Fecha unaFecha : fechasDisponibles) {	
-			int indiceArbitros = 0;
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
-			for (Partido partidoActual : unaFecha.getPartidos()) {
-				if (indiceArbitros > todosLosArbitros.size()) {
-					indiceArbitros = 0;
-					partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
+			int indiceArbitros = 0;
+			for (@SuppressWarnings("unused") Partido partidoActual : unaFecha.getPartidos()) {
+				if (indiceArbitros < todosLosArbitros.size()) {
+					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					todosLosArbitros.get(indiceArbitros)
+					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
 				}
 				else {
-					partidoActual.setArbitro(todosLosArbitros.get(indiceArbitros));
-					indiceArbitros++;
-				}				
+					indiceArbitros = 0;
+					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					todosLosArbitros.get(indiceArbitros)
+					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+				}
 			}
-		}		
+		}
+		return ret;
 	}	
 
 	public ArrayList<Arbitro> ordenarArbitros(ArrayList<Arbitro> arbitrosDisponibles) {

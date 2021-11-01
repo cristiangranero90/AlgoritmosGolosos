@@ -11,7 +11,6 @@ public class Campeonato {
 		fechas = new ArrayList<>();
 		arbitrosDisponibles = new ArrayList<>();
 	}
-
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<Fecha> getFechas() {
