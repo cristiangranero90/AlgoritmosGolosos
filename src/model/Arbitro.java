@@ -9,6 +9,10 @@ public class Arbitro {
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
 	}
+	public Arbitro() {
+		numeroDeArbitro = -1;
+		nombreDeArbitro = "";
+	}
 
 	public Integer getNumeroDeArbitro() {
 		return numeroDeArbitro;
