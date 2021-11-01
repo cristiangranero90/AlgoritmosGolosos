@@ -18,7 +18,7 @@ public class Campeonato {
 			return (ArrayList<Fecha>) fechas.clone();
 		}
 		else {
-			throw new RuntimeException("No existen fechas o no hay fechas cargadas. ");
+			throw new RuntimeException("No hay fechas cargadas. ");
 		}		
 	}
 	
@@ -36,7 +36,7 @@ public class Campeonato {
 			return (ArrayList<Arbitro>) arbitrosDisponibles.clone();
 		}
 		else {
-			throw new RuntimeException("No existen arbitros o no hay arbitros cargados. ");
+			throw new RuntimeException("No existe arbitro o no hay arbitros cargados. ");
 		}		
 	}
 	

@@ -11,6 +11,14 @@ public class Fecha  {
 		partidos = new ArrayList<>();
 		setNumeroDeFecha(numeroDePartido);
 	}
+	
+	public boolean agregarPartido(Partido nuevo) {
+		return getPartidos().add(nuevo);
+	}
+	
+	public int cantidadPartidos() {
+		return getPartidos().size();
+	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<Partido> getPartidos() {
