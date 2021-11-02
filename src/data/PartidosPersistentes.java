@@ -1,7 +1,11 @@
 package data;
 
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 
 
 import java.io.FileNotFoundException;
@@ -10,19 +14,20 @@ import java.io.IOException;
 
 
 
-import org.json.simple.JSONObject;
+//import org.json.simple.JSONObject;
 
 public class PartidosPersistentes {
 
 	//Para GSON JSON
 	public void lectura (FileReader file)
 	{
-		JSONParser parser = new JSONParser();
-
+		//JSONParser parser = new JSONParser();
+		JsonParser parser = new JsonParser();
 		try {
 			Object obj= parser.parse(new FileReader("prueba.json"));
 			
-			JSONObject jsonobj= (JSONObject) obj;
+			JsonObject jsonobj = (JsonObject) obj;
+			//JSONObject jsonobj= (JSONObject) obj;
 			
 			System.out.println("JSON leido"+ jsonobj);
 			}
@@ -31,8 +36,8 @@ public class PartidosPersistentes {
 			//manejo de error
 		} catch (IOException e) {
 			//manejo de error
-		} catch (ParseException e) {
-			System.out.println("se lanzó esta exception");
+		} catch (JsonParseException e) {
+			System.out.println(e.toString() + "se lanzï¿½ esta exception");
 		}
 
 	}
