@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class Club {
 	
+	@Override
+	public String toString() {
+		return nombre ;
+	}
+
 	private String nombre;
 	private HashMap<Arbitro, Integer> arbitros;
 	

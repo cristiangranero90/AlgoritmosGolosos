@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Fecha  {
 	
+	
+
 	private ArrayList<Partido> partidos;
 	private Integer numeroDeFecha;
 	
@@ -38,5 +40,10 @@ public class Fecha  {
 		
 		
 	}	
+	
+	@Override
+	public String toString() {
+		return "Fecha [partidos=" + partidos + ", numeroDeFecha=" + numeroDeFecha + "]";
+	}
 
 }

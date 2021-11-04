@@ -1,0 +1,86 @@
+{
+	
+			"fechas1": [
+				"San Lorenzo", "Huracan",
+				"Racing", "River"
+
+				, "Estudiantes", "Talleres",
+				"Boca", "Argentinos",
+				"Independiente", "Velez"
+			
+		,
+		
+			
+				"River", "San Lorenzo",
+				"Talleres", "Huracan",
+				"Argentinos", "Racing",
+				"Velez", "Estudiantes",
+				"Independiente", "Boca"
+			
+		,
+		
+			
+				"Racing", "Independiente",
+				"Estudiantes", "Boca",
+				"San Lorenzo", "Talleres",
+				"River", "Argentinos",
+				"Huracan", "Velez"
+			
+		,
+		
+			
+				"Argentinos", "San Lorenzo",
+				"Velez", "Talleres",
+				"Independiente", "River",
+				"Boca", "Huracan",
+				"Estudiantes", "Racing"
+			
+		,
+		
+			
+				"San Lorenzo", "Velez",
+				"Argentinos", "Independiente",
+				"Talleres", "Boca",
+				"River", "Estudiantes",
+				"Huracan", "Racing"
+			
+		,
+		
+		 
+				"Independiente", "San Lorenzo",
+				"Boca", "Velez",
+				"Estudiantes", "Argentinos",
+				"Racing", "Talleres",
+				"Huracan", "River"
+			
+		,
+		
+			
+				"San Lorenzo", "Boca",
+				"Independiente", "Estudiantes",
+				"Velez", "Racing",
+				"Argentinos", "Huracan",
+				"Talleres", "River"
+			
+		,
+		
+			
+				"Estudiantes", "San Lorenzo",
+				"Racing", "Boca",
+				"Huracan", "Independiente",
+				"River", "Velez",
+				"Talleres", "Argentinos"
+			
+		,
+		
+			
+				"San Lorenzo", "Racing",
+				"Estudiantes", "Huracan",
+				"Boca", "River",
+				"Independiente", "Talleres",
+				"Velez", "Argentinos"
+			
+		
+	]
+
+}

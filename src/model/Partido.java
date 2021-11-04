@@ -1,29 +1,36 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Partido {
 	
-	private Club[] encuentro;
+	private Map<Club,Club> encuentro;
 	private Arbitro arbitro;
 	
 	public Partido(Club uno, Club dos) {
-		encuentro = new Club[1];
-		encuentro[0] = uno;
-		encuentro[1] = dos;
+		encuentro = new HashMap <Club,Club>();
+		encuentro.put(uno, dos);
 	}
 	
-	public Club getClub(int indice) throws Exception {
-		if (indice == 0 || indice == 1) {
-			return getEncuentro()[indice];
-		}
-		else {
-			throw new RuntimeException("El indice ingresado para club, es invalido. ");
-		}
+	//public Club getClub(int indice) throws Exception {
+		//if (indice == 0 || indice == 1) {
+			//return getEncuentro()[indice];
+		//}
+		//else {
+		//	throw new RuntimeException("El indice ingresado para club, es invalido. ");
+	//	}
+	//}
+
+	public HashMap getEncuentro() {
+		return (HashMap) encuentro;
+	}
+	
+	@Override
+	public String toString() {
+		return encuentro.toString();
 	}
 
-	public Club[] getEncuentro() {
-		return this.encuentro;
-	}
-	
 	public void setArbitro(Arbitro nuevo) {
 		if (arbitro != null) {
 			this.arbitro = nuevo;
