@@ -7,8 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso/gson-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso/json-simple-1.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="src/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
