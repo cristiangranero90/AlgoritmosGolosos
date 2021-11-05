@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class Campeonato {
 	
+	@Override
+	public String toString() {
+		return "Campeonato [fechas=" + fechas + "]";
+	}
+
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
 
