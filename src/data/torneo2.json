@@ -1,0 +1,102 @@
+{
+	
+		"fecha 1": [
+			"San Lorenzo", "Huracan"
+		, 
+			"Racing", "River"
+		,
+			"Estudiantes", "Talleres"
+		, 
+			"Boca", "Argentinos"
+		, 
+			"Independiente", "Velez"
+		],
+		"fecha 2": [
+			"River", "San Lorenzo"
+		, 
+			"Talleres", "Huracan"
+		, 
+			"Argentinos", "Racing"
+		, 
+			"Velez", "Estudiantes"
+		, 
+			"Independiente", "Boca"
+		],
+		"fecha 3": [
+			"Racing", "Independiente"
+		, 
+			"Estudiantes", "Boca"
+		, 
+			"San Lorenzo", "Talleres"
+		, 
+			"River", "Argentinos"
+		, 
+			"Huracan", "Velez"
+		],
+		"fecha 4": [
+			"Argentinos", "San Lorenzo"
+		, 
+			"Velez", "Talleres"
+		, 
+			"Independiente", "River"
+		, 
+			"Boca", "Huracan"
+		, 
+			"Estudiantes", "Racing"
+		],
+		"fecha 5": [
+			"San Lorenzo", "Velez"
+		, 
+			"Argentinos", "Independiente"
+		, 
+			"Talleres", "Boca"
+		, 
+			"River", "Estudiantes"
+		, 
+			"Huracan", "Racing"
+		],
+		"fecha 6": [
+			"Independiente", "San Lorenzo"
+		, 
+			"Boca", "Velez"
+		, 
+			"Estudiantes", "Argentinos"
+		, 
+			"Racing", "Talleres"
+		, 
+			"Huracan", "River"
+		],
+		"fecha 7": [
+			"San Lorenzo", "Boca"
+		, 
+			"Independiente", "Estudiantes"
+		, 
+			"Velez", "Racing"
+		, 
+			"Argentinos", "Huracan"
+		, 
+			"Talleres", "River"
+		],
+		"fecha 8": [
+			"Estudiantes", "San Lorenzo"
+		, 
+			"Racing", "Boca"
+		, 		
+			"Huracan", "Independiente"
+		, 
+			"River", "Velez"
+		, 
+			"Talleres", "Argentinos"
+		],
+		"fecha 9": [
+			"San Lorenzo", "Racing"
+		, 
+			"Estudiantes", "Huracan"
+		, 
+			"Boca", "River"
+		, 
+			"Independiente", "Talleres"
+		, 
+			"Velez", "Argentinos"
+		]
+	}
