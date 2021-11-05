@@ -43,7 +43,7 @@ public class Fecha  {
 	
 	@Override
 	public String toString() {
-		return "Fecha [partidos=" + partidos + ", numeroDeFecha=" + numeroDeFecha + "]";
+		return "  numero De Fecha  " + numeroDeFecha +"  partidos = " + partidos ;
 	}
 
 }

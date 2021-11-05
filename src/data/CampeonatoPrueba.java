@@ -23,7 +23,7 @@ public class CampeonatoPrueba {
 		Campeonato torneo=new Campeonato();
 		JsonParser parser = new JsonParser();
 		try {
-			Object obj= parser.parse(new FileReader("C:\\Users\\Lorenzo\\Documents\\javaeclipse\\PROGRAMACION 3\\tp 3\\campeonato.json"));
+			Object obj= parser.parse(new FileReader("src/data/torneo2.json"));
 			
 			JsonObject jsonobj = (JsonObject) obj;
 			//JSONObject jsonobj= (JSONObject) obj;
@@ -32,14 +32,23 @@ public class CampeonatoPrueba {
 			System.out.println("JSON leido"+ jsonobj);
 			ArrayList <String> ret=new ArrayList <String>();
 			
-			ret.add("Fecha1");
-			ret.add("Fecha2");
-			//ArrayList <String> equipos=new ArrayList <String>();
+			ret.add("fecha 1");
+			ret.add("fecha 2");
+			ret.add("fecha 3");
+			ret.add("fecha 4");
+			ret.add("fecha 5");
+			ret.add("fecha 6");
+			ret.add("fecha 7");
+			ret.add("fecha 8");
+			ret.add("fecha 9");
+			
+			int contador=1;
 			for (String elem: ret)
 			{
 			JsonArray campeonato =jsonobj.getAsJsonArray(elem);
 			JsonArray fecha =campeonato.getAsJsonArray();
-			Fecha _fecha= new Fecha(1);
+			
+			Fecha _fecha= new Fecha(contador);
 			ArrayList <String> equipos=new ArrayList <String>();
 			
 			for(int i=0;i<fecha.size();i++) {
@@ -61,7 +70,7 @@ public class CampeonatoPrueba {
 			
 				torneo.agregarFechas(_fecha);
 				
-				
+				contador++;
 				
 			
 			

@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
+import model.Campeonato;
 import model.Club;
 import model.Fecha;
 import model.Partido;
@@ -29,52 +30,83 @@ import java.util.Map;
 public class PartidosPersistentes {
 
 	//Para GSON JSON
-	ArrayList<Partido> todosLosPartidos;
+	public Campeonato torneo;
 	
-	public ArrayList<Partido> Lectura (){
+	
+	public Campeonato Lectura (){
 		
 		
-		ArrayList <Partido>todosLosPartidos= new ArrayList<Partido> ();
-	
-		//JSONParser parser = new JSONParser();
+		Campeonato torneo=new Campeonato();
 		JsonParser parser = new JsonParser();
 		try {
-			Object obj= parser.parse(new FileReader("src/data/calendario2.json"));
+			Object obj= parser.parse(new FileReader("src/data/torneo2.json"));
 			
 			JsonObject jsonobj = (JsonObject) obj;
 			//JSONObject jsonobj= (JSONObject) obj;
 			
 			
-			System.out.println("JSON leido"+ jsonobj);
+			ArrayList<String> ret = guardarEquipos();
 			
-			JsonArray fecha =jsonobj.getAsJsonArray("fechas1");
-			for(int i=0;i<fecha.size()-1;i+=2) {
-				System.out.println(i);
+			int contador=1;
+			for (String elem: ret)
+			{
+			JsonArray campeonato =jsonobj.getAsJsonArray(elem);
+			JsonArray fecha =campeonato.getAsJsonArray();
+			
+			Fecha _fecha= new Fecha(contador);
+			ArrayList <String> equipos=new ArrayList <String>();
+			
+			for(int i=0;i<fecha.size();i++) {
+				equipos.add(fecha.get(i).getAsString());
 				
-				
-				Club club1= new Club (fecha.get(i).getAsString());
-				Club club2= new Club (fecha.get(i+1).getAsString());
+			}
+			
+			
+			for(int j=0;j<equipos.size()-1;j+=2) {
+				Club club1= new Club (equipos.get(j));
+				Club club2=  new Club (equipos.get(j+1));
 				Partido par=new Partido (club1,club2);
-				todosLosPartidos.add(par);
+				_fecha.agregarPartido(par);
+				
 			}
+			
+			
+				torneo.agregarFechas(_fecha);
 				
-				
-				
+				contador++;
 				
 			
 			
 			}
-
-		 catch (FileNotFoundException e) {
-			//manejo de error
-		} catch (IOException e) {
-			//manejo de error
-		} catch (JsonParseException e) {
 			
 		}
+		 catch (FileNotFoundException e) {
+			//manejo de error
+			 System.out.println("filenot");
+		} catch (IOException e) {
+			//manejo de error
+			System.out.println("ioex");
+		} catch (JsonParseException e) {
+			System.out.println("jsonparce");
+		}
 		
-		return todosLosPartidos;
+		return torneo;
 
+	}
+
+	private ArrayList<String> guardarEquipos() {
+		ArrayList <String> ret=new ArrayList <String>();
+		
+		ret.add("fecha 1");
+		ret.add("fecha 2");
+		ret.add("fecha 3");
+		ret.add("fecha 4");
+		ret.add("fecha 5");
+		ret.add("fecha 6");
+		ret.add("fecha 7");
+		ret.add("fecha 8");
+		ret.add("fecha 9");
+		return ret;
 	}
 	
 

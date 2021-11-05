@@ -6,7 +6,7 @@ public class Campeonato {
 	
 	@Override
 	public String toString() {
-		return "Campeonato [fechas=" + fechas + "]";
+		return "Campeonato [fechas " + fechas + "]";
 	}
 
 	private ArrayList<Fecha> fechas;
