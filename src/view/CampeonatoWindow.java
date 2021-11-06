@@ -33,6 +33,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.JTextArea;
 import javax.swing.JSlider;
@@ -77,7 +83,7 @@ public class CampeonatoWindow {
 	 */
 	private void initialize() {
 		frmTp = new JFrame();
-		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/view/images.jpg")));
+		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/images.jpg")));
 		frmTp.setTitle("TP 3 - ALGORITMO GOLOSO");
 		frmTp.setBounds(100, 100, 800, 600);
 		frmTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,6 +163,29 @@ public class CampeonatoWindow {
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		Calendario.add(btnNewButton_1);
+		
+		
+		//TODO Panel Grafico JfreeChart
+		
+		
+		DefaultPieDataset dataset = new DefaultPieDataset( );
+	      dataset.setValue("Arbitro 1", new Double( 20 ) );
+	      dataset.setValue("Arbitro 2", new Double( 20 ) );
+	      dataset.setValue("Arbitro 3", new Double( 40 ) );
+	      dataset.setValue("Arbitro 4", new Double( 10 ) );
+
+	      JFreeChart chart = ChartFactory.createPieChart(
+	         "Apariciones de arbitros",   // chart title
+	         dataset,          // data
+	         true,             // include legend
+	         true,
+	         false);
+	      
+	    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
+	    tabbedPane.addTab("Grafico", null, chartPanel, null);
+	  
+		//Fin
+		
 		
 		JPanel Acerca = new JPanel();
 		tabbedPane.addTab("Acerca de", null, Acerca, null);
