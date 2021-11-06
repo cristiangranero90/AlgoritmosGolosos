@@ -32,7 +32,12 @@ import javax.swing.JTextPane;
 public class CampeonatoWindow implements Contract.View {
 
 	private JFrame frmTp;
-	private JButton atras;
+	private JButton botonAtras;
+	private JButton botonAplicar;
+	private JComboBox<String> comboCriterio;
+	private JTabbedPane tabsPanel;
+	private JLabel labelCriterio;
+	private JLabel labelImagen;
 
 	/**
 	 * Launch the application.
@@ -78,48 +83,50 @@ public class CampeonatoWindow implements Contract.View {
 		frmTp.getContentPane().setLayout(null);
 		frmTp.setResizable(false);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 764, 539);
-		frmTp.getContentPane().add(tabbedPane);
+		
+		
+		tabsPanel = new JTabbedPane(JTabbedPane.TOP);
+		tabsPanel.setBounds(10, 11, 764, 539);
+		frmTp.getContentPane().add(tabsPanel);
 		
 				
 		JPanel Opciones = new JPanel();
-		tabbedPane.addTab("Opciones", null, Opciones, null);
+		tabsPanel.addTab("Opciones", null, Opciones, null);
 		Opciones.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Aplicar");
-		btnNewButton.addActionListener(new ActionListener() {
+		botonAplicar = new JButton("Aplicar");
+		botonAplicar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				//TODO Aplicar por criterio
 			}
 		});
-		btnNewButton.setBounds(55, 170, 135, 23);
-		Opciones.add(btnNewButton);
+		botonAplicar.setBounds(55, 170, 135, 23);
+		Opciones.add(botonAplicar);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(12, 124, 228, 23);
-		comboBox.addItem("Heuristica por apariciones");
-		comboBox.addItem("Heuristica por otro criterio");
-		comboBox.addItem("Fuerza Bruta");
-		comboBox.addItem("Backtracking");
-		Opciones.add(comboBox);
+		comboCriterio = new JComboBox<String>();
+		comboCriterio.setBounds(12, 124, 228, 23);
+		comboCriterio.addItem("Heuristica por apariciones");
+		comboCriterio.addItem("Heuristica por otro criterio");
+		comboCriterio.addItem("Fuerza Bruta");
+		comboCriterio.addItem("Backtracking");
+		Opciones.add(comboCriterio);
 		
-		JLabel labelCriterio = new JLabel("Seleccione  criterio:");
+		labelCriterio = new JLabel("Seleccione  criterio:");
 		labelCriterio.setBounds(47, 89, 157, 23);
 		Opciones.add(labelCriterio);
 		
-		JLabel labelImagen = new JLabel("");
+		labelImagen = new JLabel("");
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		labelImagen.setBounds(410, 58, 269, 154);
 		Opciones.add(labelImagen);
 		
 		JPanel Calendario = new JPanel();
-		tabbedPane.addTab("Calendario", null, Calendario, null);
+		tabsPanel.addTab("Calendario", null, Calendario, null);
 		Calendario.setLayout(new GridLayout(10, 10, 0, 0));
 		
 		//TODO 
-		atras = new JButton("Atras");
+		botonAtras = new JButton("Atras");
 		JPanel panelPartidos = new JPanel();
 		panelPartidos.setLayout(new GridLayout(10,10));
 		//while partido has next, add new button seteo el  damePartido(i)
@@ -127,19 +134,19 @@ public class CampeonatoWindow implements Contract.View {
 		panelPartidos.add(new JLabel("Otro"));
 		panelPartidos.add(new JLabel("Otro1"));
 		panelPartidos.add(new JLabel("Otro2"));
-		panelPartidos.add(this.atras);
+		panelPartidos.add(this.botonAtras);
 		
 		
 
 		
 		//atras.setLabel("Atras");
-		atras.addActionListener(new ActionListener() {
+		botonAtras.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelPartidos.setVisible(false);
 				//tabbedPane.getComponentAt(1).setVisible(false);
-				tabbedPane.setComponentAt(1, Calendario);
+				tabsPanel.setComponentAt(1, Calendario);
 				
 			}
 			
@@ -153,8 +160,8 @@ public class CampeonatoWindow implements Contract.View {
 				panelPartidos.setVisible(true);
 				
 				
-				tabbedPane.getComponentAt(1).setVisible(false);
-				tabbedPane.setComponentAt(1, panelPartidos);
+				tabsPanel.getComponentAt(1).setVisible(false);
+				tabsPanel.setComponentAt(1, panelPartidos);
 				
 			}
 		});
@@ -185,13 +192,13 @@ public class CampeonatoWindow implements Contract.View {
 	         false);
 	      
 	    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-	    tabbedPane.addTab("Grafico", null, chartPanel, null);
+	    tabsPanel.addTab("Grafico", null, chartPanel, null);
 	  
 		//Fin
 		
 		
 		JPanel Acerca = new JPanel();
-		tabbedPane.addTab("Acerca de", null, Acerca, null);
+		tabsPanel.addTab("Acerca de", null, Acerca, null);
 		Acerca.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Programacion III");

@@ -6,17 +6,19 @@ import presenter.Contract;
 
 public class Campeonato implements Contract.model {
 	
-	@Override
-	public String toString() {
-		return "Campeonato [fechas " + fechas + "]";
-	}
-
+	private Contract.Presenter presenter;
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
 
+	public Campeonato(Contract.Presenter presenter) {
+		this.fechas = new ArrayList<>();
+		this.arbitrosDisponibles = new ArrayList<>();
+		this.presenter = presenter;
+	}
+	
 	public Campeonato() {
-		fechas = new ArrayList<>();
-		arbitrosDisponibles = new ArrayList<>();
+		this.fechas = new ArrayList<>();
+		this.arbitrosDisponibles = new ArrayList<>();
 	}
 	
 	public void asignarSolucion(Solucion solucionGenerada) {
@@ -68,5 +70,11 @@ public class Campeonato implements Contract.model {
 	public int cantFechas() {
 		return this.fechas.size();
 	}
+	
+	@Override
+	public String toString() {
+		return "Campeonato [fechas " + fechas + "]";
+	}
+
 	
 }

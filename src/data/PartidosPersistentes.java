@@ -28,10 +28,8 @@ import java.util.Map;
 //import org.json.simple.JSONObject;
 
 public class PartidosPersistentes {
-
-	//Para GSON JSON
-	public Campeonato torneo;
 	
+	public Campeonato torneo;
 	
 	public Campeonato Lectura (){
 		
