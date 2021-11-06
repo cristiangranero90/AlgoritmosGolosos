@@ -85,7 +85,7 @@ public class CampeonatoWindow {
 	 */
 	private void initialize() {
 		frmTp = new JFrame();
-		 try {
+		try {
 			UIManager.setLookAndFeel(
 			            UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -93,8 +93,9 @@ public class CampeonatoWindow {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		 
 		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
-		frmTp.setTitle("TP 3 - ALGORITMO GOLOSO");
+		frmTp.setTitle("TP 3 : La Hora Referi");
 		frmTp.setBounds(100, 100, 800, 600);
 		frmTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTp.getContentPane().setLayout(null);
@@ -109,16 +110,26 @@ public class CampeonatoWindow {
 		tabbedPane.addTab("Opciones", null, Opciones, null);
 		Opciones.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Asignar");
-		btnNewButton.setBounds(53, 163, 135, 23);
+		JButton btnNewButton = new JButton("Aplicar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//TODO Aplicar por criterio
+			}
+		});
+		btnNewButton.setBounds(55, 170, 135, 23);
 		Opciones.add(btnNewButton);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(29, 125, 182, 23);
+		comboBox.setBounds(12, 124, 228, 23);
+		comboBox.addItem("Heuristica por apariciones");
+		comboBox.addItem("Heuristica por otro criterio");
+		comboBox.addItem("Fuerza Bruta");
+		comboBox.addItem("Backtracking");
 		Opciones.add(comboBox);
 		
-		JLabel lblNewLabel = new JLabel("Seleccione  criterio");
-		lblNewLabel.setBounds(53, 89, 135, 23);
+		JLabel lblNewLabel = new JLabel("Seleccione  criterio:");
+		lblNewLabel.setBounds(47, 89, 157, 23);
 		Opciones.add(lblNewLabel);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
