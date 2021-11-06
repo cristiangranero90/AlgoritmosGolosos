@@ -22,6 +22,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 import presenter.Contract;
+import presenter.Presenter;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -31,6 +32,7 @@ import javax.swing.JTextPane;
 
 public class CampeonatoWindow implements Contract.View {
 
+	private Presenter presentador;
 	private JFrame frmTp;
 	private JButton botonAtras;
 	private JButton botonAplicar;
@@ -38,6 +40,10 @@ public class CampeonatoWindow implements Contract.View {
 	private JTabbedPane tabsPanel;
 	private JLabel labelCriterio;
 	private JLabel labelImagen;
+	private JPanel Opciones;
+	private JPanel Calendario;
+	private JPanel panelPartidos;
+	private JPanel Acerca;
 
 	/**
 	 * Launch the application.
@@ -67,30 +73,32 @@ public class CampeonatoWindow implements Contract.View {
 	 */
 	private void initialize() {
 		frmTp = new JFrame();
+		presentador = new Presenter(this);
+		
+		//Look and Feel
 		try {
 			UIManager.setLookAndFeel(
 			            UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		 
+		//Configuracion de frame principal
 		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		frmTp.setTitle("TP 3 : La Hora Referi");
 		frmTp.setBounds(100, 100, 800, 600);
 		frmTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTp.getContentPane().setLayout(null);
-		frmTp.setResizable(false);
+		frmTp.setResizable(false);		
 		
-		
-		
+		//Tabs panel incializador
 		tabsPanel = new JTabbedPane(JTabbedPane.TOP);
 		tabsPanel.setBounds(10, 11, 764, 539);
 		frmTp.getContentPane().add(tabsPanel);
 		
-				
-		JPanel Opciones = new JPanel();
+		//Tab opciones
+		Opciones = new JPanel();
 		tabsPanel.addTab("Opciones", null, Opciones, null);
 		Opciones.setLayout(null);
 		
@@ -121,22 +129,23 @@ public class CampeonatoWindow implements Contract.View {
 		labelImagen.setBounds(410, 58, 269, 154);
 		Opciones.add(labelImagen);
 		
-		JPanel Calendario = new JPanel();
+		
+		//Tab Calendario
+		Calendario = new JPanel();
 		tabsPanel.addTab("Calendario", null, Calendario, null);
 		Calendario.setLayout(new GridLayout(10, 10, 0, 0));
 		
 		//TODO 
 		botonAtras = new JButton("Atras");
-		JPanel panelPartidos = new JPanel();
+		
+		panelPartidos = new JPanel();
 		panelPartidos.setLayout(new GridLayout(10,10));
 		//while partido has next, add new button seteo el  damePartido(i)
 		panelPartidos.add(new JLabel("Boca - River       Arbitro Seleccionado: Jose"));
 		panelPartidos.add(new JLabel("Otro"));
 		panelPartidos.add(new JLabel("Otro1"));
 		panelPartidos.add(new JLabel("Otro2"));
-		panelPartidos.add(this.botonAtras);
-		
-		
+		panelPartidos.add(this.botonAtras);		
 
 		
 		//atras.setLabel("Atras");
@@ -145,9 +154,7 @@ public class CampeonatoWindow implements Contract.View {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelPartidos.setVisible(false);
-				//tabbedPane.getComponentAt(1).setVisible(false);
-				tabsPanel.setComponentAt(1, Calendario);
-				
+				tabsPanel.setComponentAt(1, Calendario);				
 			}
 			
 		});
@@ -157,9 +164,7 @@ public class CampeonatoWindow implements Contract.View {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelPartidos.setEnabled(true);
-				panelPartidos.setVisible(true);
-				
-				
+				panelPartidos.setVisible(true);				
 				tabsPanel.getComponentAt(1).setVisible(false);
 				tabsPanel.setComponentAt(1, panelPartidos);
 				
@@ -175,7 +180,10 @@ public class CampeonatoWindow implements Contract.View {
 		Calendario.add(btnNewButton_1);
 		
 		
-		//TODO Panel Grafico JfreeChart
+		
+		
+		
+		//TODO Tab Panel Grafico JfreeChart
 		
 		
 		DefaultPieDataset dataset = new DefaultPieDataset( );
@@ -197,7 +205,8 @@ public class CampeonatoWindow implements Contract.View {
 		//Fin
 		
 		
-		JPanel Acerca = new JPanel();
+	    //Tab Acerca de 
+		Acerca = new JPanel();
 		tabsPanel.addTab("Acerca de", null, Acerca, null);
 		Acerca.setLayout(null);
 		
