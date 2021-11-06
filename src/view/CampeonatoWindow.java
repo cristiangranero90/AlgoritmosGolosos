@@ -42,6 +42,7 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 
 public class CampeonatoWindow {
 
@@ -156,6 +157,36 @@ public class CampeonatoWindow {
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		Calendario.add(btnNewButton_1);
+		
+		JPanel Acerca = new JPanel();
+		tabbedPane.addTab("Acerca de", null, Acerca, null);
+		Acerca.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Programacion III");
+		lblNewLabel_1.setForeground(Color.GRAY);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Bauhaus 93", Font.BOLD, 44));
+		lblNewLabel_1.setBounds(10, 35, 707, 72);
+		Acerca.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Trabajo Practico 3, \"La hora, refer\u00ED\"");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(0, 129, 717, 34);
+		Acerca.add(lblNewLabel_2);
+		
+		JTextPane txtpnheuristicaYAlgoritmos = new JTextPane();
+		txtpnheuristicaYAlgoritmos.setEditable(false);
+		txtpnheuristicaYAlgoritmos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtpnheuristicaYAlgoritmos.setText("\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagens\r\n\r\n\r\nUniverdidad Nacional de General Sarmiento - A\u00F1o 2021");
+		txtpnheuristicaYAlgoritmos.setBounds(132, 184, 478, 181);
+		Acerca.add(txtpnheuristicaYAlgoritmos);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/ungsjpg.jpg")));
+		lblNewLabel_3.setBounds(10, 401, 707, 99);
+		Acerca.add(lblNewLabel_3);
 		
 		
 	}
