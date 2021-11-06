@@ -48,6 +48,8 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JTextPane;
 
 public class CampeonatoWindow {
@@ -83,6 +85,14 @@ public class CampeonatoWindow {
 	 */
 	private void initialize() {
 		frmTp = new JFrame();
+		 try {
+			UIManager.setLookAndFeel(
+			            UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		frmTp.setTitle("TP 3 - ALGORITMO GOLOSO");
 		frmTp.setBounds(100, 100, 800, 600);
@@ -213,13 +223,13 @@ public class CampeonatoWindow {
 		txtpnheuristicaYAlgoritmos.setEditable(false);
 		txtpnheuristicaYAlgoritmos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnheuristicaYAlgoritmos.setText("\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagens\r\n\r\n\r\nUniverdidad Nacional de General Sarmiento - A\u00F1o 2021");
-		txtpnheuristicaYAlgoritmos.setBounds(132, 184, 478, 181);
+		txtpnheuristicaYAlgoritmos.setBounds(179, 175, 399, 181);
 		Acerca.add(txtpnheuristicaYAlgoritmos);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/ungsjpg.jpg")));
-		lblNewLabel_3.setBounds(10, 401, 707, 99);
+		lblNewLabel_3.setBounds(10, 379, 707, 99);
 		Acerca.add(lblNewLabel_3);
 		
 		
