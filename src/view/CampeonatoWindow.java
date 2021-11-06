@@ -3,48 +3,25 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JList;
-import java.awt.BorderLayout;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
 
+import java.awt.GridLayout;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
 import javax.swing.JPanel;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.JTabbedPane;
-import javax.swing.JPasswordField;
-import javax.swing.JCheckBox;
-import javax.swing.JToggleButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import java.awt.CardLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeModel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.JTextArea;
-import javax.swing.JSlider;
-import java.awt.Canvas;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
+import presenter.Contract;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -52,7 +29,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JTextPane;
 
-public class CampeonatoWindow {
+public class CampeonatoWindow implements Contract.View {
 
 	private JFrame frmTp;
 	private JButton atras;
@@ -128,14 +105,14 @@ public class CampeonatoWindow {
 		comboBox.addItem("Backtracking");
 		Opciones.add(comboBox);
 		
-		JLabel lblNewLabel = new JLabel("Seleccione  criterio:");
-		lblNewLabel.setBounds(47, 89, 157, 23);
-		Opciones.add(lblNewLabel);
+		JLabel labelCriterio = new JLabel("Seleccione  criterio:");
+		labelCriterio.setBounds(47, 89, 157, 23);
+		Opciones.add(labelCriterio);
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
-		lblNewLabel_4.setBounds(410, 58, 269, 154);
-		Opciones.add(lblNewLabel_4);
+		JLabel labelImagen = new JLabel("");
+		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
+		labelImagen.setBounds(410, 58, 269, 154);
+		Opciones.add(labelImagen);
 		
 		JPanel Calendario = new JPanel();
 		tabbedPane.addTab("Calendario", null, Calendario, null);
@@ -143,14 +120,14 @@ public class CampeonatoWindow {
 		
 		//TODO 
 		atras = new JButton("Atras");
-		JPanel nuevo = new JPanel();
-		nuevo.setLayout(new GridLayout(10,10));
+		JPanel panelPartidos = new JPanel();
+		panelPartidos.setLayout(new GridLayout(10,10));
 		//while partido has next, add new button seteo el  damePartido(i)
-		nuevo.add(new JLabel("Boca - River       Arbitro Seleccionado: Jose"));
-		nuevo.add(new JLabel("Otro"));
-		nuevo.add(new JLabel("Otro1"));
-		nuevo.add(new JLabel("Otro2"));
-		nuevo.add(this.atras);
+		panelPartidos.add(new JLabel("Boca - River       Arbitro Seleccionado: Jose"));
+		panelPartidos.add(new JLabel("Otro"));
+		panelPartidos.add(new JLabel("Otro1"));
+		panelPartidos.add(new JLabel("Otro2"));
+		panelPartidos.add(this.atras);
 		
 		
 
@@ -160,7 +137,7 @@ public class CampeonatoWindow {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				nuevo.setVisible(false);
+				panelPartidos.setVisible(false);
 				//tabbedPane.getComponentAt(1).setVisible(false);
 				tabbedPane.setComponentAt(1, Calendario);
 				
@@ -172,12 +149,12 @@ public class CampeonatoWindow {
 		JButton btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nuevo.setEnabled(true);
-				nuevo.setVisible(true);
+				panelPartidos.setEnabled(true);
+				panelPartidos.setVisible(true);
 				
 				
 				tabbedPane.getComponentAt(1).setVisible(false);
-				tabbedPane.setComponentAt(1, nuevo);
+				tabbedPane.setComponentAt(1, panelPartidos);
 				
 			}
 		});
@@ -195,12 +172,12 @@ public class CampeonatoWindow {
 		
 		
 		DefaultPieDataset dataset = new DefaultPieDataset( );
-	      dataset.setValue("Arbitro 1", new Double( 20 ) );
-	      dataset.setValue("Arbitro 2", new Double( 20 ) );
-	      dataset.setValue("Arbitro 3", new Double( 40 ) );
-	      dataset.setValue("Arbitro 4", new Double( 10 ) );
+	    dataset.setValue("Arbitro 1", new Double( 20 ) );
+	    dataset.setValue("Arbitro 2", new Double( 20 ) );
+	    dataset.setValue("Arbitro 3", new Double( 40 ) );
+	    dataset.setValue("Arbitro 4", new Double( 10 ) );
 
-	      JFreeChart chart = ChartFactory.createPieChart(
+	    JFreeChart chart = ChartFactory.createPieChart(
 	         "Apariciones de arbitros",   // chart title
 	         dataset,          // data
 	         true,             // include legend
@@ -233,7 +210,7 @@ public class CampeonatoWindow {
 		JTextPane txtpnheuristicaYAlgoritmos = new JTextPane();
 		txtpnheuristicaYAlgoritmos.setEditable(false);
 		txtpnheuristicaYAlgoritmos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtpnheuristicaYAlgoritmos.setText("\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagens\r\n\r\n\r\nUniverdidad Nacional de General Sarmiento - A\u00F1o 2021");
+		txtpnheuristicaYAlgoritmos.setText("\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagnes\r\n\r\n\r\nUniversidad Nacional de General Sarmiento - A\u00F1o 2021");
 		txtpnheuristicaYAlgoritmos.setBounds(179, 175, 399, 181);
 		Acerca.add(txtpnheuristicaYAlgoritmos);
 		

@@ -2,9 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Fecha  {
-	
-	
+public class Fecha  {	
 
 	private ArrayList<Partido> partidos;
 	private Integer numeroDeFecha;

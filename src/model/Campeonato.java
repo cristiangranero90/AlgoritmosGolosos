@@ -2,7 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
-public class Campeonato {
+import presenter.Contract;
+
+public class Campeonato implements Contract.model {
 	
 	@Override
 	public String toString() {
