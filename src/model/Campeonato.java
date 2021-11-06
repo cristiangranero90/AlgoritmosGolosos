@@ -63,4 +63,8 @@ public class Campeonato {
 		return arbitrosDisponibles.contains(nuevo);
 	}
 	
+	public int cantFechas() {
+		return this.fechas.size();
+	}
+	
 }

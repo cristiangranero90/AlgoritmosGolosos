@@ -25,6 +25,13 @@ public class Fecha  {
 	public ArrayList<Partido> getPartidos() {
 		return (ArrayList<Partido>) partidos;
 	}
+	
+	public Partido damePartido(int i) {
+		if (i > cantidadPartidos() || i < 0 ) {
+			throw new RuntimeException("Indice de partido invalido");
+		}
+		return getPartidos().get(i);
+	}
 
 	public Integer getNumeroDeFecha() {
 		return numeroDeFecha;
