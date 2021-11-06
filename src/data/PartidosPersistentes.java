@@ -14,6 +14,7 @@ import model.Campeonato;
 import model.Club;
 import model.Fecha;
 import model.Partido;
+import presenter.Contract;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -31,10 +32,10 @@ public class PartidosPersistentes {
 	
 	public Campeonato torneo;
 	
-	public Campeonato Lectura (){
+	public static Campeonato Lectura (Contract.Presenter presenter){
 		
 		
-		Campeonato torneo=new Campeonato();
+		Campeonato torneo=new Campeonato(presenter);
 		JsonParser parser = new JsonParser();
 		try {
 			Object obj= parser.parse(new FileReader("src/data/torneo2.json"));
@@ -52,29 +53,13 @@ public class PartidosPersistentes {
 			JsonArray fecha =campeonato.getAsJsonArray();
 			
 			Fecha _fecha= new Fecha(contador);
-			ArrayList <String> equipos=new ArrayList <String>();
 			
-			for(int i=0;i<fecha.size();i++) {
-				equipos.add(fecha.get(i).getAsString());
+			ArrayList <String> equipos=new ArrayList <String>();			
+			construirEquipos(fecha, _fecha, equipos);	
+			
+			torneo.agregarFechas(_fecha);
 				
-			}
-			
-			
-			for(int j=0;j<equipos.size()-1;j+=2) {
-				Club club1= new Club (equipos.get(j));
-				Club club2=  new Club (equipos.get(j+1));
-				Partido par=new Partido (club1,club2);
-				_fecha.agregarPartido(par);
-				
-			}
-			
-			
-				torneo.agregarFechas(_fecha);
-				
-				contador++;
-				
-			
-			
+			contador++;			
 			}
 			
 		}
@@ -92,7 +77,21 @@ public class PartidosPersistentes {
 
 	}
 
-	private ArrayList<String> guardarEquipos() {
+	private static void construirEquipos(JsonArray fecha, Fecha _fecha, ArrayList<String> equipos) {
+		for(int i=0;i<fecha.size();i++) {
+			equipos.add(fecha.get(i).getAsString());				
+		}
+		
+		for(int j=0;j<equipos.size()-1;j+=2) {
+			Club club1= new Club (equipos.get(j));
+			Club club2=  new Club (equipos.get(j+1));
+			Partido par=new Partido (club1,club2);
+			_fecha.agregarPartido(par);
+			
+		}
+	}
+
+	private static ArrayList<String> guardarEquipos() {
 		ArrayList <String> ret=new ArrayList <String>();
 		
 		ret.add("fecha 1");

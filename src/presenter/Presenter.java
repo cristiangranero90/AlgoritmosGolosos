@@ -1,5 +1,6 @@
 package presenter;
 
+import data.PartidosPersistentes;
 import model.Campeonato;
 import presenter.Contract.View;
 
@@ -10,7 +11,6 @@ public class Presenter implements Contract.Presenter {
 	
 	public Presenter(Contract.View view) {
 		this.view = view;
-		model = new Campeonato(this);
-		
+		model = PartidosPersistentes.Lectura(this);		
 	}
 }
