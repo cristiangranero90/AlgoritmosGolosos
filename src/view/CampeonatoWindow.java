@@ -83,7 +83,7 @@ public class CampeonatoWindow {
 	 */
 	private void initialize() {
 		frmTp = new JFrame();
-		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/images.jpg")));
+		frmTp.setIconImage(Toolkit.getDefaultToolkit().getImage(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		frmTp.setTitle("TP 3 - ALGORITMO GOLOSO");
 		frmTp.setBounds(100, 100, 800, 600);
 		frmTp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,17 +99,22 @@ public class CampeonatoWindow {
 		tabbedPane.addTab("Opciones", null, Opciones, null);
 		Opciones.setLayout(null);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(29, 163, 89, 23);
+		JButton btnNewButton = new JButton("Asignar");
+		btnNewButton.setBounds(53, 163, 135, 23);
 		Opciones.add(btnNewButton);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(29, 65, 182, 23);
+		comboBox.setBounds(29, 125, 182, 23);
 		Opciones.add(comboBox);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(29, 25, 182, 23);
+		JLabel lblNewLabel = new JLabel("Seleccione  criterio");
+		lblNewLabel.setBounds(53, 89, 135, 23);
 		Opciones.add(lblNewLabel);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
+		lblNewLabel_4.setBounds(410, 58, 269, 154);
+		Opciones.add(lblNewLabel_4);
 		
 		JPanel Calendario = new JPanel();
 		tabbedPane.addTab("Calendario", null, Calendario, null);
