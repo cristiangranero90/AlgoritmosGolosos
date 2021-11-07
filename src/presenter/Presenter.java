@@ -14,7 +14,7 @@ public class Presenter implements Contract.Presenter {
 	public Presenter(Contract.View view) {
 		this.view = view;
 		model = PartidosPersistentes.Lectura(this);	
-		model.generarArbitros(3);		
+		model.generarArbitros(false, 10);		
 	}
 
 	@Override
@@ -66,5 +66,10 @@ public class Presenter implements Contract.Presenter {
 	@Override
 	public double[] dameEstadistica() {
 		return model.dameEstadisticaArbitros();
+	}
+
+	@Override
+	public void construirArbitros(boolean nombres, int cantidad) {
+		model.generarArbitros(nombres, cantidad);		
 	}
 }

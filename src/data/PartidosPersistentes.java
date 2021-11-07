@@ -21,6 +21,23 @@ public class PartidosPersistentes {
 	
 	public Campeonato torneo;
 	
+	public static ArrayList<String> leerNombres() {
+		JsonParser parser = new JsonParser();
+		ArrayList<String> ret = new ArrayList<>();
+		try {
+			Object obj= parser.parse(new FileReader("src/data/nombres.json"));			
+			JsonObject jsonobj = (JsonObject) obj;				
+			JsonArray nombres = jsonobj.getAsJsonArray("Arbitros");
+			for (int i = 0; i < nombres.size(); i++) {
+				ret.add(nombres.get(i).getAsString());
+			}
+		}
+		catch (Exception e){
+			System.err.println(e.toString());
+		}
+		return ret;
+	}
+	
 	@SuppressWarnings("deprecation")
 	public static Campeonato Lectura (Contract.Presenter presenter){	
 		
@@ -76,8 +93,7 @@ public class PartidosPersistentes {
 	}
 
 	private static ArrayList<String> guardarEquipos() {
-		ArrayList <String> ret=new ArrayList <String>();
-		
+		ArrayList <String> ret=new ArrayList <String>();		
 		ret.add("fecha 1");
 		ret.add("fecha 2");
 		ret.add("fecha 3");

@@ -9,17 +9,20 @@ public class Campeonato implements Contract.model {
 	private Contract.Presenter presentador;
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
+	private ArrayList<String> nombresDisponibles;
 
 	public Campeonato(Contract.Presenter presenter) {
 		
 		this.fechas = new ArrayList<>();
 		this.arbitrosDisponibles = new ArrayList<>();
 		this.presentador = presenter;
+		nombresDisponibles = new ArrayList<>();
 	}
 	
 	public Campeonato() {
 		this.fechas = new ArrayList<>();
 		this.arbitrosDisponibles = new ArrayList<>();
+		nombresDisponibles = new ArrayList<String>();
 	}
 	
 	@Override
@@ -121,11 +124,22 @@ public class Campeonato implements Contract.model {
 
 
 	@Override
-	public void generarArbitros(int cantidad) {
-		for (int i = 0; i < cantidad; i++) {
-			Arbitro nuevo = new Arbitro(i, "Sin nombre");
-			arbitrosDisponibles.add(nuevo);
-		}		
+	public void generarArbitros(boolean nombres, int cantidad) {
+		if (!nombres) {
+			for (int i = 0; i < cantidad; i++) {
+				Arbitro nuevo = new Arbitro(i, "Sin nombre");
+				arbitrosDisponibles.add(nuevo);
+			}	
+		}
+		else {
+			arbitrosDisponibles = new ArrayList<>();
+			nombresDisponibles = data.PartidosPersistentes.leerNombres();
+			for (int i = 0; i < cantidad; i++) {
+				Arbitro nuevo = new Arbitro(i, nombresDisponibles.get(i));
+				arbitrosDisponibles.add(nuevo);
+			}
+		}
+			
 	}
 	
 }

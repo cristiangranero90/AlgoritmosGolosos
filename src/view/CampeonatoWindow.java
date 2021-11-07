@@ -27,6 +27,9 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JTextPane;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JSlider;
 
 public class CampeonatoWindow implements Contract.View {
 
@@ -41,6 +44,8 @@ public class CampeonatoWindow implements Contract.View {
 	private JPanel Opciones;
 	private JPanel Calendario;
 	private JPanel Acerca;
+	private JCheckBox checkBoxNombres;
+	private JSlider slider;
 
 	/**
 	 * Create the application.
@@ -117,11 +122,11 @@ public class CampeonatoWindow implements Contract.View {
 				botonAplicarPresionado((String) comboCriterio.getSelectedItem());
 			}
 		});
-		botonAplicar.setBounds(55, 170, 135, 23);
+		botonAplicar.setBounds(486, 259, 135, 23);
 		Opciones.add(botonAplicar);
 		
 		comboCriterio = new JComboBox<String>();
-		comboCriterio.setBounds(12, 124, 228, 23);
+		comboCriterio.setBounds(446, 101, 228, 23);
 		comboCriterio.addItem("Heuristica por apariciones");
 		comboCriterio.addItem("Heuristica por otro criterio");
 		comboCriterio.addItem("Fuerza Bruta");
@@ -129,25 +134,52 @@ public class CampeonatoWindow implements Contract.View {
 		Opciones.add(comboCriterio);
 		
 		labelCriterio = new JLabel("Seleccione  criterio:");
-		labelCriterio.setBounds(47, 89, 157, 23);
+		labelCriterio.setBounds(513, 67, 98, 23);
 		Opciones.add(labelCriterio);
 		
 		labelImagen = new JLabel("");
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
-		labelImagen.setBounds(410, 58, 269, 154);
+		labelImagen.setBounds(22, 67, 269, 154);
 		Opciones.add(labelImagen);
 		
 		JLabel labelTituloOpciones = new JLabel("La Hora, referi");
-		labelTituloOpciones.setForeground(Color.RED);
+		labelTituloOpciones.setForeground(Color.BLACK);
 		labelTituloOpciones.setBackground(Color.WHITE);
 		labelTituloOpciones.setFont(new Font("Arial", Font.BOLD, 29));
-		labelTituloOpciones.setBounds(12, 12, 228, 46);
+		labelTituloOpciones.setBounds(53, 11, 228, 46);
 		Opciones.add(labelTituloOpciones);
+		
+		JLabel labelSolucion = new JLabel("Opciones para obtener una solucion:");
+		labelSolucion.setBounds(463, 20, 189, 41);
+		Opciones.add(labelSolucion);
+		
+		checkBoxNombres = new JCheckBox("Asignar nombres ");
+		checkBoxNombres.setBounds(500, 218, 111, 23);
+		Opciones.add(checkBoxNombres);
+		
+		
+		//checkBoxNombres.isSelected();
+		
+		slider = new JSlider();
+		slider.setPaintLabels(true);
+		slider.setSnapToTicks(true);
+		slider.setMaximum(50);
+		slider.setPaintTicks(true);
+		slider.setMinorTickSpacing(5);
+		slider.setMajorTickSpacing(5);
+		slider.setMinimum(5);
+		slider.setBounds(403, 160, 310, 41);
+		Opciones.add(slider);
+		
+		
+		JLabel labelCantArbitros = new JLabel("Cantidad de arbitros");
+		labelCantArbitros.setBounds(510, 135, 111, 14);
+		Opciones.add(labelCantArbitros);
 	}
 
 	protected void botonAplicarPresionado(String selectedItem) {
-		presentador.botonAplicar(selectedItem);
-		
+		crearArbitros(checkBoxNombres.isEnabled(), slider.getValue());
+		presentador.botonAplicar(selectedItem);		
 	}
 
 	public void construirTabAcercaDe() {
@@ -297,5 +329,10 @@ public class CampeonatoWindow implements Contract.View {
 	@Override
 	public double[] pedirEstadisticas() {
 		return presentador.dameEstadistica();
+	}
+
+	@Override
+	public void crearArbitros(boolean nombres, int cantidad) {
+		presentador.construirArbitros(nombres, cantidad);		
 	}
 }
