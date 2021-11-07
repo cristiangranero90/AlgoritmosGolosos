@@ -217,7 +217,7 @@ public class CampeonatoWindow implements Contract.View {
 	public void construirGrafico() {
 				
 		if (!existenArbitros()) {
-			System.out.println(existenArbitros());
+			//System.out.println(existenArbitros());
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 		    dataset.setValue("Sin datos", 100.0 );
 		    JFreeChart chart = ChartFactory.createPieChart(
