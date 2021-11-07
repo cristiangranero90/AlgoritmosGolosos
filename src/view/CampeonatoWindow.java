@@ -126,21 +126,7 @@ public class CampeonatoWindow implements Contract.View {
 		//TODO Tab Panel Grafico JfreeChart
 		
 		
-		DefaultPieDataset dataset = new DefaultPieDataset( );
-	    dataset.setValue("Arbitro 1", new Double( 20 ) );
-	    dataset.setValue("Arbitro 2", new Double( 20 ) );
-	    dataset.setValue("Arbitro 3", new Double( 40 ) );
-	    dataset.setValue("Arbitro 4", new Double( 10 ) );
-
-	    JFreeChart chart = ChartFactory.createPieChart(
-	         "Apariciones de arbitros",   // chart title
-	         dataset,          // data
-	         true,             // include legend
-	         true,
-	         false);
-	      
-	    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-	    tabsPanel.addTab("Grafico", null, chartPanel, null);
+		construirGrafico();
 	  
 		//Fin
 		
@@ -177,6 +163,24 @@ public class CampeonatoWindow implements Contract.View {
 		Acerca.add(lblNewLabel_3);
 		
 		
+	}
+
+	public void construirGrafico() {
+		DefaultPieDataset dataset = new DefaultPieDataset( );
+	    dataset.setValue("Arbitro 1", new Double( 20 ) );
+	    dataset.setValue("Arbitro 2", new Double( 20 ) );
+	    dataset.setValue("Arbitro 3", new Double( 40 ) );
+	    dataset.setValue("Arbitro 4", new Double( 10 ) );
+
+	    JFreeChart chart = ChartFactory.createPieChart(
+	         "Apariciones de arbitros",   // chart title
+	         dataset,          // data
+	         true,             // include legend
+	         true,
+	         false);
+	      
+	    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
+	    tabsPanel.addTab("Grafico", null, chartPanel, null);
 	}
 
 	private void construirCalendario() {

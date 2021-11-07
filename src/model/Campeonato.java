@@ -6,14 +6,15 @@ import presenter.Contract;
 
 public class Campeonato implements Contract.model {
 	
-	private Contract.Presenter presenter;
+	private Contract.Presenter presentador;
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
 
 	public Campeonato(Contract.Presenter presenter) {
+		
 		this.fechas = new ArrayList<>();
 		this.arbitrosDisponibles = new ArrayList<>();
-		this.presenter = presenter;
+		this.presentador = presenter;
 	}
 	
 	public Campeonato() {

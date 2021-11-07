@@ -52,6 +52,20 @@ public class Fecha  {
 	public String toString() {
 		return "  numero De Fecha  " + numeroDeFecha +"  partidos = " + partidos ;
 	}
+	
+	public boolean existenArbitros() {
+		
+		if (getPartidos().get(0).getArbitro() == null) {
+			return false;
+		}
+		else {
+			boolean ret = true;
+			for (Partido partidos : getPartidos()) {
+				ret = ret && partidos.getArbitro() != null;
+			}
+			return ret;
+		}
+	}
 
 	
 }
