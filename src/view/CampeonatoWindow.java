@@ -87,8 +87,7 @@ public class CampeonatoWindow implements Contract.View {
 		//Tab Calendario
 		Calendario = new JPanel();			
 		tabsPanel.addTab("Calendario", null, Calendario, null);		
-		Calendario.setLayout(new GridLayout(10, 10, 2, 2));		
-		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
+		Calendario.setLayout(new GridLayout(10, 10, 2, 2));	
 		
 		construirCalendario();		
 		
@@ -211,11 +210,21 @@ public class CampeonatoWindow implements Contract.View {
 		      
 		    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
 		    tabsPanel.setComponentAt(2, chartPanel);
+		    construirCalendario();
 		}
 		
 	}
 
 	private void construirCalendario() {
+		
+		if (tabsPanel.getComponentCount() > 2) {
+			//System.out.println("Entro tabs");
+			Calendario.removeAll();
+			Calendario.setLayout(new GridLayout(10, 10, 2, 2));
+			tabsPanel.setComponentAt(1, Calendario);
+		}
+		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
+		//System.out.println("Y siguio");
 		for (int i = 0; i < botonesCalendario.length ; i++) {
 			JButton botonFecha = new JButton("Fecha: " + (i+1) );
 			JButton atrasOtro = new JButton("Atras");

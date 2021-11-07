@@ -15,7 +15,7 @@ public class Presenter implements Contract.Presenter {
 	public Presenter(Contract.View view) {
 		this.view = view;
 		model = PartidosPersistentes.Lectura(this);	
-		model.generarArbitros(10);
+		model.generarArbitros(3);
 		
 	}
 

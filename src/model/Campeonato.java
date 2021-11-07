@@ -25,12 +25,9 @@ public class Campeonato implements Contract.model {
 	@Override
 	public void asignarSolucion(Solucion solucionGenerada) {
 		int indice = 0;
-		System.out.println(solucionGenerada.getArbitrosSeleccionados().size());
-		for(Fecha fecha : getFechas()) {
-			System.out.println("entro fecha");
+		for(Fecha fecha : getFechas()) {			
 			for (Partido partidoActual : fecha.getPartidos()) {
 				partidoActual.setArbitro(solucionGenerada.dameArbitro(indice));
-				System.out.println("entro");
 				indice++;
 			}
 		}
