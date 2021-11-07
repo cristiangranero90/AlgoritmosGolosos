@@ -19,13 +19,13 @@ public class Presenter implements Contract.Presenter {
 		return model.cantidadDeFechas();
 	}
 
+	@Override
 	public int dameCantidadDePartidos(int i) {
-		// TODO Auto-generated method stub
 		return model.cantidadDePartidos(i);
 	}
 
-	public String damePartido(int fechaNumero, int partidoNumero) {
-		
+	@Override
+	public String damePartido(int fechaNumero, int partidoNumero) {		
 		return model.dameFecha(fechaNumero).nombrePartido(partidoNumero);
 	}
 }

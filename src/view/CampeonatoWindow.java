@@ -235,8 +235,18 @@ public class CampeonatoWindow implements Contract.View {
 		}
 	}
 
-	private String pedirNombrePartidos(int fechaNumero, int partidoNumero) {
-		
+	@Override
+	public String pedirNombrePartidos(int fechaNumero, int partidoNumero) {		
 		return presentador.damePartido(fechaNumero, partidoNumero);
+	}
+
+	@Override
+	public int dameCantidadFechas() {
+		return presentador.dameCantidadFechas();
+	}
+
+	@Override
+	public int dameCantidadDePartidos(int fechaNumero) {
+		return presentador.dameCantidadDePartidos(fechaNumero);
 	}
 }
