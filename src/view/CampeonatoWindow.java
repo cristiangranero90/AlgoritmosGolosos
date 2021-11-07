@@ -164,8 +164,8 @@ public class CampeonatoWindow implements Contract.View {
 		JTextPane txtpnheuristicaYAlgoritmos = new JTextPane();
 		txtpnheuristicaYAlgoritmos.setEditable(false);
 		txtpnheuristicaYAlgoritmos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtpnheuristicaYAlgoritmos.setText("\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagnes\r\n\r\n\r\nUniversidad Nacional de General Sarmiento - A\u00F1o 2021");
-		txtpnheuristicaYAlgoritmos.setBounds(179, 175, 399, 181);
+		txtpnheuristicaYAlgoritmos.setText("\n\"Heuristica y algoritmos golosos\"\r\n\r\nAlumnos: \r\nCristian Granero - Lorenzo Ortiz.\r\n\r\nProfesores:\r\nJavier Marenco - Patricia Bagnes\r\n\r\n");
+		txtpnheuristicaYAlgoritmos.setBounds(240, 192, 242, 157);
 		Acerca.add(txtpnheuristicaYAlgoritmos);
 		
 		JLabel lblNewLabel_3 = new JLabel("");

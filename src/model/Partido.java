@@ -34,10 +34,10 @@ public class Partido {
 		}
 		
 		if (getArbitro() == null) {
-			encuentroString.append("    Arbitro aun no seleccionado");
+			encuentroString.append("   ->   Arbitro aun no seleccionado");
 		}
-		else {
-			encuentroString.append(" Arbitro numero: " + getArbitro().getNumeroDeArbitro());
+		else { 
+			encuentroString.append("   ->   Arbitro numero: " + getArbitro().getNumeroDeArbitro());
 		}
 		
 		return encuentroString.toString().toUpperCase();

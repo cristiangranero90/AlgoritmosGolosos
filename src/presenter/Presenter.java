@@ -5,7 +5,6 @@ import model.Campeonato;
 import model.Solucion;
 import model.Solver;
 import model.ordenarPorAparicion;
-import presenter.Contract.View;
 
 public class Presenter implements Contract.Presenter {
 
@@ -15,8 +14,7 @@ public class Presenter implements Contract.Presenter {
 	public Presenter(Contract.View view) {
 		this.view = view;
 		model = PartidosPersistentes.Lectura(this);	
-		model.generarArbitros(3);
-		
+		model.generarArbitros(3);		
 	}
 
 	@Override
@@ -46,14 +44,11 @@ public class Presenter implements Contract.Presenter {
 			case "Heuristica por apariciones" : generarSolucion();
 			break;
 			
-			default : throw new RuntimeException("Elemento invalido. ");
-		
-		}
-		
+			default : throw new RuntimeException("Elemento invalido. ");		
+		}		
 	}
 
-	private void generarSolucion() {
-		
+	private void generarSolucion() {		
 		//Thread generarSolucion
 		Runnable generar = new Runnable() {
 			@Override
