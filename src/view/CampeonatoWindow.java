@@ -80,6 +80,33 @@ public class CampeonatoWindow implements Contract.View {
 		frmTp.getContentPane().add(tabsPanel);
 		
 		//Tab opciones
+		
+		construirTabOpciones();
+		
+		
+		//Tab Calendario
+		Calendario = new JPanel();			
+		tabsPanel.addTab("Calendario", null, Calendario, null);		
+		Calendario.setLayout(new GridLayout(10, 10, 2, 2));		
+		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
+		
+		construirCalendario();		
+		
+		//TODO Tab Panel Grafico JfreeChart
+		
+		
+		construirGrafico();
+	  
+		//Fin
+		
+		
+	    //Tab Acerca de 
+		construirTabAcercaDe();
+		
+		
+	}
+
+	public void construirTabOpciones() {
 		Opciones = new JPanel();
 		tabsPanel.addTab("Opciones", null, Opciones, null);
 		Opciones.setLayout(null);
@@ -110,26 +137,9 @@ public class CampeonatoWindow implements Contract.View {
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		labelImagen.setBounds(410, 58, 269, 154);
 		Opciones.add(labelImagen);
-		
-		
-		//Tab Calendario
-		Calendario = new JPanel();		
-		
-		tabsPanel.addTab("Calendario", null, Calendario, null);		
-		Calendario.setLayout(new GridLayout(10, 10, 2, 2));
-		
-		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
-		construirCalendario();		
-		
-		//TODO Tab Panel Grafico JfreeChart
-		
-		
-		construirGrafico();
-	  
-		//Fin
-		
-		
-	    //Tab Acerca de 
+	}
+
+	public void construirTabAcercaDe() {
 		Acerca = new JPanel();
 		tabsPanel.addTab("Acerca de", null, Acerca, null);
 		Acerca.setLayout(null);
@@ -159,8 +169,6 @@ public class CampeonatoWindow implements Contract.View {
 		lblNewLabel_3.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/ungsjpg.jpg")));
 		lblNewLabel_3.setBounds(10, 379, 707, 99);
 		Acerca.add(lblNewLabel_3);
-		
-		
 	}
 
 	public void construirGrafico() {
@@ -209,7 +217,6 @@ public class CampeonatoWindow implements Contract.View {
 			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {
 						
 				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
-				nueva.setBackground(Color.WHITE);
 				nueva.setHorizontalAlignment(SwingConstants.CENTER);
 				panelPartidosOtro.add(nueva);				
 			}
