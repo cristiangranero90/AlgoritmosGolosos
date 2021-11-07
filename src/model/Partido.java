@@ -13,22 +13,34 @@ public class Partido {
 		encuentro.put(uno, dos);
 	}
 	
-	//public Club getClub(int indice) throws Exception {
-		//if (indice == 0 || indice == 1) {
-			//return getEncuentro()[indice];
-		//}
-		//else {
-		//	throw new RuntimeException("El indice ingresado para club, es invalido. ");
-	//	}
-	//}
-
-	public HashMap getEncuentro() {
-		return (HashMap) encuentro;
+	public Map<Club,Club> getEncuentro() {
+		return encuentro;
 	}
 	
 	@Override
 	public String toString() {
-		return encuentro.toString();
+		StringBuilder encuentroString = new StringBuilder();
+		for (int i = 0; i < getEncuentro().toString().length(); i++) {
+			if (getEncuentro().toString().charAt(i) != '{' && 
+					getEncuentro().toString().charAt(i) != '}' &&
+					getEncuentro().toString().charAt(i) != '=') {
+				
+				encuentroString.append(getEncuentro().toString().charAt(i));
+			}
+			
+			else if (getEncuentro().toString().charAt(i) == '=') {
+				encuentroString.append("  -  ");
+			}			
+		}
+		
+		if (getArbitro() == null) {
+			encuentroString.append("    Arbitro aun no seleccionado");
+		}
+		else {
+			encuentroString.append(" Arbitro numero: " + getArbitro().getNumeroDeArbitro());
+		}
+		
+		return encuentroString.toString().toUpperCase();
 	}
 
 	public void setArbitro(Arbitro nuevo) {

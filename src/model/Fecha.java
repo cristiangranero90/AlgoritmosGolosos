@@ -41,13 +41,11 @@ public class Fecha  {
 		}
 		else {
 			throw new RuntimeException("Numero de partido invalido. ");
-		}
-		
-		
+		}	
 	}	
 	
 	public String nombrePartido(int partidoNumero) {
-		return getPartidos().get(partidoNumero).getEncuentro().toString();
+		return getPartidos().get(partidoNumero).toString();
 	}
 	
 	@Override
