@@ -1,5 +1,6 @@
 package presenter;
 
+import model.Arbitro;
 import model.Fecha;
 import model.Solucion;
 
@@ -27,7 +28,8 @@ public interface Contract {
 		public int cantidadDePartidos(int deFecha);
 		public Fecha dameFecha(int fechaNumero);
 		public boolean arbitrosAsignados();
-		public void registrarSolucion(Solucion solucion);
+		public void asignarSolucion(Solucion solucion);
+		public void generarArbitros(int cantidad);
 		
 	}
 }

@@ -22,11 +22,16 @@ public class Campeonato implements Contract.model {
 		this.arbitrosDisponibles = new ArrayList<>();
 	}
 	
+	@Override
 	public void asignarSolucion(Solucion solucionGenerada) {
 		int indice = 0;
+		System.out.println(solucionGenerada.getArbitrosSeleccionados().size());
 		for(Fecha fecha : getFechas()) {
+			System.out.println("entro fecha");
 			for (Partido partidoActual : fecha.getPartidos()) {
-				partidoActual.setArbitro(solucionGenerada.getArbitrosSeleccionados().get(indice));
+				partidoActual.setArbitro(solucionGenerada.dameArbitro(indice));
+				System.out.println("entro");
+				indice++;
 			}
 		}
 	}	
@@ -93,17 +98,16 @@ public class Campeonato implements Contract.model {
 	}
 
 	@Override
-	public boolean arbitrosAsignados() {		
+	public boolean arbitrosAsignados() {	
 		return getFechas().get(0).existenArbitros();
 	}
 
+
 	@Override
-	public void registrarSolucion(Solucion solucion) {
-		try {
-			asignarSolucion(solucion);
-		}
-		catch (Exception e){
-			e.toString();
+	public void generarArbitros(int cantidad) {
+		for (int i = 0; i < cantidad; i++) {
+			Arbitro nuevo = new Arbitro(i, "Sin nombre");
+			arbitrosDisponibles.add(nuevo);
 		}		
 	}
 	

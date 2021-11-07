@@ -178,8 +178,9 @@ public class CampeonatoWindow implements Contract.View {
 
 	@Override
 	public void construirGrafico() {
-		
+				
 		if (!existenArbitros()) {
+			System.out.println(existenArbitros());
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 		    dataset.setValue("Sin datos", new Double( 100 ) );
 		    JFreeChart chart = ChartFactory.createPieChart(
@@ -190,10 +191,11 @@ public class CampeonatoWindow implements Contract.View {
 			         false);
 			      
 			    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-			    tabsPanel.addTab("Grafico", null, chartPanel, null);
-			
+			    tabsPanel.addTab("Grafico", null, chartPanel, null);			
 		}
 		else {
+			
+			tabsPanel.setTabComponentAt(2, null);;
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 		    dataset.setValue("Arbitro 1", new Double( 20 ) );
 		    dataset.setValue("Arbitro 2", new Double( 20 ) );
@@ -208,7 +210,7 @@ public class CampeonatoWindow implements Contract.View {
 		         false);
 		      
 		    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-		    tabsPanel.addTab("Grafico", null, chartPanel, null);
+		    tabsPanel.setComponentAt(2, chartPanel);
 		}
 		
 	}

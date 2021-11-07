@@ -14,7 +14,9 @@ public class Presenter implements Contract.Presenter {
 	
 	public Presenter(Contract.View view) {
 		this.view = view;
-		model = PartidosPersistentes.Lectura(this);		
+		model = PartidosPersistentes.Lectura(this);	
+		model.generarArbitros(10);
+		
 	}
 
 	@Override
@@ -54,7 +56,7 @@ public class Presenter implements Contract.Presenter {
 		
 		Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
 		Solucion solucion = solver.resolver();
-		model.registrarSolucion(solucion);
+		model.asignarSolucion(solucion);
 		view.construirGrafico();		
 	}
 }

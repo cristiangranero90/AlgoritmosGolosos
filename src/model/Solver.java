@@ -22,20 +22,23 @@ public class Solver {
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
 		
+		int indiceArbitros = 0;
 		for (Fecha unaFecha : fechasDisponibles) {	
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
-			int indiceArbitros = 0;
+			
 			for (@SuppressWarnings("unused") Partido partidoActual : unaFecha.getPartidos()) {
 				if (indiceArbitros < todosLosArbitros.size()) {
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					indiceArbitros++;
 				}
 				else {
 					indiceArbitros = 0;
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					indiceArbitros++;
 				}
 			}
 		}

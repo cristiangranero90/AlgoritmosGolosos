@@ -44,7 +44,7 @@ public class Partido {
 	}
 
 	public void setArbitro(Arbitro nuevo) {
-		if (arbitro != null) {
+		if (nuevo != null) {
 			this.arbitro = nuevo;
 		}
 		else {
