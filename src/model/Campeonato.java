@@ -92,5 +92,10 @@ public class Campeonato implements Contract.model {
 		return getFechas().get(fechaNumero);
 	}
 
+	@Override
+	public boolean arbitrosAsignados() {		
+		return getFechas().get(0).existenArbitros();
+	}
+
 	
 }

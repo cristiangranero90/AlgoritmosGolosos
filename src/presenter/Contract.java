@@ -8,6 +8,7 @@ public interface Contract {
 		public int dameCantidadFechas();
 		public int dameCantidadDePartidos(int fechaNumero);
 		public String pedirNombrePartidos(int fechaNumero, int partidoNumero);
+		public boolean existenArbitros();
 		
 	}
 	
@@ -15,6 +16,7 @@ public interface Contract {
 		public int dameCantidadFechas();
 		public int dameCantidadDePartidos(int fechaNumero);
 		public String damePartido(int fechaNumero, int partidoNumero);
+		public boolean arbitrosAsignados();
 		
 	}
 	
@@ -22,6 +24,7 @@ public interface Contract {
 		public int cantidadDeFechas();
 		public int cantidadDePartidos(int deFecha);
 		public Fecha dameFecha(int fechaNumero);
+		public boolean arbitrosAsignados();
 		
 	}
 }

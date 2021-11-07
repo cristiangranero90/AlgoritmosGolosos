@@ -28,4 +28,9 @@ public class Presenter implements Contract.Presenter {
 	public String damePartido(int fechaNumero, int partidoNumero) {		
 		return model.dameFecha(fechaNumero).nombrePartido(partidoNumero);
 	}
+
+	@Override
+	public boolean arbitrosAsignados() {		
+		return model.arbitrosAsignados();
+	}
 }

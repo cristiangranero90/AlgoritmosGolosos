@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -166,21 +164,39 @@ public class CampeonatoWindow implements Contract.View {
 	}
 
 	public void construirGrafico() {
-		DefaultPieDataset dataset = new DefaultPieDataset( );
-	    dataset.setValue("Arbitro 1", new Double( 20 ) );
-	    dataset.setValue("Arbitro 2", new Double( 20 ) );
-	    dataset.setValue("Arbitro 3", new Double( 40 ) );
-	    dataset.setValue("Arbitro 4", new Double( 10 ) );
+		
+		if (!existenArbitros()) {
+			DefaultPieDataset dataset = new DefaultPieDataset( );
+		    dataset.setValue("Sin datos", new Double( 100 ) );
+		    JFreeChart chart = ChartFactory.createPieChart(
+			         "Apariciones de arbitros [SIN ASIGNAR]",   // chart title
+			         dataset,          // data
+			         true,             // include legend
+			         true,
+			         false);
+			      
+			    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
+			    tabsPanel.addTab("Grafico", null, chartPanel, null);
+			
+		}
+		else {
+			DefaultPieDataset dataset = new DefaultPieDataset( );
+		    dataset.setValue("Arbitro 1", new Double( 20 ) );
+		    dataset.setValue("Arbitro 2", new Double( 20 ) );
+		    dataset.setValue("Arbitro 3", new Double( 40 ) );
+		    dataset.setValue("Arbitro 4", new Double( 10 ) );
 
-	    JFreeChart chart = ChartFactory.createPieChart(
-	         "Apariciones de arbitros",   // chart title
-	         dataset,          // data
-	         true,             // include legend
-	         true,
-	         false);
-	      
-	    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-	    tabsPanel.addTab("Grafico", null, chartPanel, null);
+		    JFreeChart chart = ChartFactory.createPieChart(
+		         "Apariciones de arbitros",   // chart title
+		         dataset,          // data
+		         true,             // include legend
+		         true,
+		         false);
+		      
+		    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
+		    tabsPanel.addTab("Grafico", null, chartPanel, null);
+		}
+		
 	}
 
 	private void construirCalendario() {
@@ -238,5 +254,10 @@ public class CampeonatoWindow implements Contract.View {
 	@Override
 	public int dameCantidadDePartidos(int fechaNumero) {
 		return presentador.dameCantidadDePartidos(fechaNumero);
+	}
+
+	@Override
+	public boolean existenArbitros() {
+		return presentador.arbitrosAsignados();
 	}
 }
