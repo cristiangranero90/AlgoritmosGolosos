@@ -138,14 +138,14 @@ public class CampeonatoWindow implements Contract.View {
 		
 		labelImagen = new JLabel("");
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
-		labelImagen.setBounds(22, 67, 269, 154);
+		labelImagen.setBounds(44, 101, 269, 154);
 		Opciones.add(labelImagen);
 		
 		JLabel labelTituloOpciones = new JLabel("La Hora, referi");
 		labelTituloOpciones.setForeground(Color.BLACK);
 		labelTituloOpciones.setBackground(Color.WHITE);
 		labelTituloOpciones.setFont(new Font("Arial", Font.BOLD, 29));
-		labelTituloOpciones.setBounds(53, 11, 228, 46);
+		labelTituloOpciones.setBounds(77, 11, 228, 46);
 		Opciones.add(labelTituloOpciones);
 		
 		JLabel labelSolucion = new JLabel("Opciones para obtener una solucion:");
