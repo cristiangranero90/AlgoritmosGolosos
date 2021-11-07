@@ -210,12 +210,13 @@ public class CampeonatoWindow implements Contract.View {
 		      
 		    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
 		    tabsPanel.setComponentAt(2, chartPanel);
-		    construirCalendario();
+		    
 		}
 		
 	}
 
-	private void construirCalendario() {
+	@Override
+	public void construirCalendario() {
 		
 		if (tabsPanel.getComponentCount() > 2) {
 			//System.out.println("Entro tabs");

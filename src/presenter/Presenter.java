@@ -54,9 +54,17 @@ public class Presenter implements Contract.Presenter {
 
 	private void generarSolucion() {
 		
-		Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
-		Solucion solucion = solver.resolver();
-		model.asignarSolucion(solucion);
-		view.construirGrafico();		
+		//Thread generarSolucion
+		Runnable generar = new Runnable() {
+			@Override
+			public void run() {
+				Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
+				Solucion solucion = solver.resolver();
+				model.asignarSolucion(solucion);
+				view.construirGrafico();
+				view.construirCalendario();				
+			}			
+		};
+		generar.run();		
 	}
 }

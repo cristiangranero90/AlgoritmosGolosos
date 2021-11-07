@@ -12,6 +12,7 @@ public interface Contract {
 		public String pedirNombrePartidos(int fechaNumero, int partidoNumero);
 		public boolean existenArbitros();
 		public void construirGrafico();
+		public void construirCalendario();
 		
 	}
 	
