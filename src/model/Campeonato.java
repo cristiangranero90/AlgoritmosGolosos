@@ -6,6 +6,7 @@ import presenter.Contract;
 
 public class Campeonato implements Contract.model {
 	
+	@SuppressWarnings("unused")
 	private Contract.Presenter presentador;
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;

@@ -2,11 +2,9 @@ package data;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
@@ -18,6 +16,7 @@ import model.Partido;
 
 public class CampeonatoPrueba {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Campeonato torneo=new Campeonato();
@@ -80,9 +79,6 @@ public class CampeonatoPrueba {
 		 catch (FileNotFoundException e) {
 			//manejo de error
 			 System.out.println("filenot");
-		} catch (IOException e) {
-			//manejo de error
-			System.out.println("ioex");
 		} catch (JsonParseException e) {
 			System.out.println("jsonparce");
 		}

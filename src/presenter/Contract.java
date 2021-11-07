@@ -1,6 +1,5 @@
 package presenter;
 
-import model.Arbitro;
 import model.Fecha;
 import model.Solucion;
 

@@ -27,7 +27,6 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JTextPane;
-import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JSlider;
 

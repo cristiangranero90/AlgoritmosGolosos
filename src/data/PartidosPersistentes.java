@@ -21,6 +21,7 @@ public class PartidosPersistentes {
 	
 	public Campeonato torneo;
 	
+	@SuppressWarnings("deprecation")
 	public static ArrayList<String> leerNombres() {
 		JsonParser parser = new JsonParser();
 		ArrayList<String> ret = new ArrayList<>();
