@@ -21,6 +21,7 @@ public class PartidosPersistentes {
 	
 	public Campeonato torneo;
 	
+	@SuppressWarnings("deprecation")
 	public static Campeonato Lectura (Contract.Presenter presenter){	
 		
 		Campeonato torneo=new Campeonato(presenter);
@@ -50,8 +51,8 @@ public class PartidosPersistentes {
 		
 		 catch (FileNotFoundException e) {
 			 System.out.println(e.toString());
-		} catch (IOException e) {
-			System.out.println(e.toString());
+		} catch (@SuppressWarnings("hiding") IOException et) {
+			System.out.println(et.toString());
 		} catch (JsonParseException e) {
 			System.out.println(e.toString());
 		}
