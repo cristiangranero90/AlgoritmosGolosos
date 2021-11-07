@@ -136,6 +136,13 @@ public class CampeonatoWindow implements Contract.View {
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		labelImagen.setBounds(410, 58, 269, 154);
 		Opciones.add(labelImagen);
+		
+		JLabel labelTituloOpciones = new JLabel("La Hora, referi");
+		labelTituloOpciones.setForeground(Color.RED);
+		labelTituloOpciones.setBackground(Color.WHITE);
+		labelTituloOpciones.setFont(new Font("Arial", Font.BOLD, 29));
+		labelTituloOpciones.setBounds(12, 12, 228, 46);
+		Opciones.add(labelTituloOpciones);
 	}
 
 	protected void botonAplicarPresionado(String selectedItem) {
