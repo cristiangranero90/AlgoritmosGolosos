@@ -11,7 +11,7 @@ public class Solver {
 	private HashMap<Arbitro, Integer> cantidadAparicionesArbitros;
 	private Comparator<Arbitro> estrategiaActual;
 	
-	Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
+	public Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
 		setInstanciaCampeonato(campeonato);
 		cantidadAparicionesArbitros = new HashMap<Arbitro, Integer>();
 		estrategiaActual = estrategia;

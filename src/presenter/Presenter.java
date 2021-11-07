@@ -2,6 +2,9 @@ package presenter;
 
 import data.PartidosPersistentes;
 import model.Campeonato;
+import model.Solucion;
+import model.Solver;
+import model.ordenarPorAparicion;
 import presenter.Contract.View;
 
 public class Presenter implements Contract.Presenter {
@@ -32,5 +35,26 @@ public class Presenter implements Contract.Presenter {
 	@Override
 	public boolean arbitrosAsignados() {		
 		return model.arbitrosAsignados();
+	}
+
+	public void botonAplicar(String selectedItem) {
+		
+		switch (selectedItem) {
+			
+			case "Heuristica por apariciones" : generarSolucion();
+			break;
+			
+			default : throw new RuntimeException("Elemento invalido. ");
+		
+		}
+		
+	}
+
+	private void generarSolucion() {
+		
+		Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
+		Solucion solucion = solver.resolver();
+		model.registrarSolucion(solucion);
+		view.construirGrafico();		
 	}
 }

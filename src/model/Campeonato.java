@@ -97,5 +97,14 @@ public class Campeonato implements Contract.model {
 		return getFechas().get(0).existenArbitros();
 	}
 
+	@Override
+	public void registrarSolucion(Solucion solucion) {
+		try {
+			asignarSolucion(solucion);
+		}
+		catch (Exception e){
+			e.toString();
+		}		
+	}
 	
 }

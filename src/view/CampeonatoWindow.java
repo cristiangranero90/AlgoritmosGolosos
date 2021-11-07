@@ -115,7 +115,7 @@ public class CampeonatoWindow implements Contract.View {
 		botonAplicar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//TODO Aplicar por criterio
+				botonAplicarPresionado((String) comboCriterio.getSelectedItem());
 			}
 		});
 		botonAplicar.setBounds(55, 170, 135, 23);
@@ -137,6 +137,11 @@ public class CampeonatoWindow implements Contract.View {
 		labelImagen.setIcon(new ImageIcon(CampeonatoWindow.class.getResource("/images/WindowIcon.jpg")));
 		labelImagen.setBounds(410, 58, 269, 154);
 		Opciones.add(labelImagen);
+	}
+
+	protected void botonAplicarPresionado(String selectedItem) {
+		presentador.botonAplicar(selectedItem);
+		
 	}
 
 	public void construirTabAcercaDe() {
@@ -171,6 +176,7 @@ public class CampeonatoWindow implements Contract.View {
 		Acerca.add(lblNewLabel_3);
 	}
 
+	@Override
 	public void construirGrafico() {
 		
 		if (!existenArbitros()) {

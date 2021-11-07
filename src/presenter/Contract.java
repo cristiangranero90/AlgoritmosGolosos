@@ -1,6 +1,7 @@
 package presenter;
 
 import model.Fecha;
+import model.Solucion;
 
 public interface Contract {
 
@@ -9,6 +10,7 @@ public interface Contract {
 		public int dameCantidadDePartidos(int fechaNumero);
 		public String pedirNombrePartidos(int fechaNumero, int partidoNumero);
 		public boolean existenArbitros();
+		public void construirGrafico();
 		
 	}
 	
@@ -25,6 +27,7 @@ public interface Contract {
 		public int cantidadDePartidos(int deFecha);
 		public Fecha dameFecha(int fechaNumero);
 		public boolean arbitrosAsignados();
+		public void registrarSolucion(Solucion solucion);
 		
 	}
 }
