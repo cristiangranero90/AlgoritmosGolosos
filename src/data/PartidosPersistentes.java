@@ -32,45 +32,39 @@ public class PartidosPersistentes {
 	
 	public Campeonato torneo;
 	
-	public static Campeonato Lectura (Contract.Presenter presenter){
-		
+	public static Campeonato Lectura (Contract.Presenter presenter){	
 		
 		Campeonato torneo=new Campeonato(presenter);
 		JsonParser parser = new JsonParser();
 		try {
-			Object obj= parser.parse(new FileReader("src/data/torneo2.json"));
 			
-			JsonObject jsonobj = (JsonObject) obj;
-			//JSONObject jsonobj= (JSONObject) obj;
-			
-			
+			Object obj= parser.parse(new FileReader("src/data/torneo2.json"));			
+			JsonObject jsonobj = (JsonObject) obj;			
 			ArrayList<String> ret = guardarEquipos();
 			
 			int contador=1;
-			for (String elem: ret)
-			{
-			JsonArray campeonato =jsonobj.getAsJsonArray(elem);
-			JsonArray fecha =campeonato.getAsJsonArray();
+			for (String elem: ret) {
+				JsonArray campeonato =jsonobj.getAsJsonArray(elem);
+				JsonArray fecha =campeonato.getAsJsonArray();
 			
-			Fecha _fecha= new Fecha(contador);
+				Fecha _fecha= new Fecha(contador);
 			
-			ArrayList <String> equipos=new ArrayList <String>();			
-			construirEquipos(fecha, _fecha, equipos);	
+				ArrayList <String> equipos=new ArrayList <String>();			
+				construirEquipos(fecha, _fecha, equipos);	
 			
-			torneo.agregarFechas(_fecha);
+				torneo.agregarFechas(_fecha);
 				
-			contador++;			
+				contador++;			
 			}
 			
 		}
+		
 		 catch (FileNotFoundException e) {
-			//manejo de error
-			 System.out.println("filenot");
+			 System.out.println(e.toString());
 		} catch (IOException e) {
-			//manejo de error
-			System.out.println("ioex");
+			System.out.println(e.toString());
 		} catch (JsonParseException e) {
-			System.out.println("jsonparce");
+			System.out.println(e.toString());
 		}
 		
 		return torneo;
@@ -104,10 +98,5 @@ public class PartidosPersistentes {
 		ret.add("fecha 8");
 		ret.add("fecha 9");
 		return ret;
-	}
-	
-
-	
-	
-	
+	}	
 }
