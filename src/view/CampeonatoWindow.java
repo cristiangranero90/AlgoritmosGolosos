@@ -45,11 +45,6 @@ public class CampeonatoWindow implements Contract.View {
 	private JPanel Acerca;
 
 	/**
-	 * Launch the application.
-	 */
-	
-
-	/**
 	 * Create the application.
 	 */
 	public CampeonatoWindow() {
@@ -195,6 +190,7 @@ public class CampeonatoWindow implements Contract.View {
 						
 				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
 				nueva.setBackground(Color.WHITE);
+				nueva.setHorizontalAlignment(SwingConstants.CENTER);
 				panelPartidosOtro.add(nueva);				
 			}
 			
