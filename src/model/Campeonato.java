@@ -76,5 +76,20 @@ public class Campeonato implements Contract.model {
 		return "Campeonato [fechas " + fechas + "]";
 	}
 
+	@Override
+	public int cantidadDeFechas() {
+		return cantFechas();
+	}
+
+	@Override
+	public int cantidadDePartidos(int deFecha) {		
+		return getFechas().get(deFecha).cantidadPartidos();
+	}
+
+	@Override
+	public Fecha dameFecha(int fechaNumero) {
+		return getFechas().get(fechaNumero);
+	}
+
 	
 }

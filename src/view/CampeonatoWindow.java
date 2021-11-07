@@ -34,15 +34,14 @@ public class CampeonatoWindow implements Contract.View {
 
 	private Presenter presentador;
 	private JFrame frmTp;
-	private JButton botonAtras;
 	private JButton botonAplicar;
+	private JButton[] botonesCalendario;
 	private JComboBox<String> comboCriterio;
 	private JTabbedPane tabsPanel;
 	private JLabel labelCriterio;
 	private JLabel labelImagen;
 	private JPanel Opciones;
 	private JPanel Calendario;
-	private JPanel panelPartidos;
 	private JPanel Acerca;
 
 	/**
@@ -131,54 +130,56 @@ public class CampeonatoWindow implements Contract.View {
 		
 		
 		//Tab Calendario
-		Calendario = new JPanel();
-		tabsPanel.addTab("Calendario", null, Calendario, null);
-		Calendario.setLayout(new GridLayout(10, 10, 0, 0));
+		Calendario = new JPanel();		
 		
-		//TODO 
-		botonAtras = new JButton("Atras");
+		tabsPanel.addTab("Calendario", null, Calendario, null);		
+		Calendario.setLayout(new GridLayout(10, 10, 2, 2));
 		
-		panelPartidos = new JPanel();
-		panelPartidos.setLayout(new GridLayout(10,10));
-		//while partido has next, add new button seteo el  damePartido(i)
-		panelPartidos.add(new JLabel("Boca - River       Arbitro Seleccionado: Jose"));
-		panelPartidos.add(new JLabel("Otro"));
-		panelPartidos.add(new JLabel("Otro1"));
-		panelPartidos.add(new JLabel("Otro2"));
-		panelPartidos.add(this.botonAtras);		
-
-		
-		//atras.setLabel("Atras");
-		botonAtras.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelPartidos.setVisible(false);
-				tabsPanel.setComponentAt(1, Calendario);				
+		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
+		for (int i = 0; i < botonesCalendario.length ; i++) {
+			JButton botonFecha = new JButton("Fecha: " + (i+1) );
+			JButton atrasOtro = new JButton("Atras");
+			final JPanel panelPartidosOtro = new JPanel();
+			panelPartidosOtro.setLayout(new GridLayout(10,10,2,2));
+			
+			
+			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {
+				
+				//panelPartidosOtro = new JPanel();				
+				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
+				nueva.setBackground(Color.WHITE);
+				panelPartidosOtro.add(nueva);				
 			}
 			
-		});
-		
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelPartidos.setEnabled(true);
-				panelPartidos.setVisible(true);				
-				tabsPanel.getComponentAt(1).setVisible(false);
-				tabsPanel.setComponentAt(1, panelPartidos);
+			atrasOtro.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//panelPartidos.setVisible(false);
+					Calendario.revalidate();
+					//Calendario.repaint();
+					tabsPanel.setComponentAt(1, Calendario);	
+					tabsPanel.repaint();
+					tabsPanel.revalidate();
+				}
 				
-			}
-		});
-		Calendario.add(btnNewButton_2);
-		
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		Calendario.add(btnNewButton_3);		
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		Calendario.add(btnNewButton_1);
-		
+			});		
+			
+			botonFecha.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					panelPartidosOtro.setEnabled(true);
+					panelPartidosOtro.setVisible(true);				
+					tabsPanel.getComponentAt(1).setVisible(false);
+					tabsPanel.setComponentAt(1, panelPartidosOtro);
+					tabsPanel.revalidate();
+				
+				}
+		    });
+			panelPartidosOtro.add(atrasOtro);
+			Calendario.add(botonFecha);
+		}
+			
+			
 		
 		
 		
@@ -237,5 +238,10 @@ public class CampeonatoWindow implements Contract.View {
 		Acerca.add(lblNewLabel_3);
 		
 		
+	}
+
+	private String pedirNombrePartidos(int fechaNumero, int partidoNumero) {
+		
+		return presentador.damePartido(fechaNumero, partidoNumero);
 	}
 }

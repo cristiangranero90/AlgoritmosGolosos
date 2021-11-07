@@ -46,9 +46,14 @@ public class Fecha  {
 		
 	}	
 	
+	public String nombrePartido(int partidoNumero) {
+		return getPartidos().get(partidoNumero).getEncuentro().toString();
+	}
+	
 	@Override
 	public String toString() {
 		return "  numero De Fecha  " + numeroDeFecha +"  partidos = " + partidos ;
 	}
 
+	
 }

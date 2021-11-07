@@ -13,4 +13,19 @@ public class Presenter implements Contract.Presenter {
 		this.view = view;
 		model = PartidosPersistentes.Lectura(this);		
 	}
+
+	@Override
+	public int dameCantidadFechas() {
+		return model.cantidadDeFechas();
+	}
+
+	public int dameCantidadDePartidos(int i) {
+		// TODO Auto-generated method stub
+		return model.cantidadDePartidos(i);
+	}
+
+	public String damePartido(int fechaNumero, int partidoNumero) {
+		
+		return model.dameFecha(fechaNumero).nombrePartido(partidoNumero);
+	}
 }
