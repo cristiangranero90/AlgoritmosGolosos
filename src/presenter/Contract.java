@@ -13,7 +13,7 @@ public interface Contract {
 		public boolean existenArbitros();
 		public void construirGrafico();
 		public void construirCalendario();
-		
+		public double[] pedirEstadisticas();
 	}
 	
 	interface Presenter{
@@ -21,6 +21,7 @@ public interface Contract {
 		public int dameCantidadDePartidos(int fechaNumero);
 		public String damePartido(int fechaNumero, int partidoNumero);
 		public boolean arbitrosAsignados();
+		public double[] dameEstadistica();
 		
 	}
 	
@@ -31,6 +32,6 @@ public interface Contract {
 		public boolean arbitrosAsignados();
 		public void asignarSolucion(Solucion solucion);
 		public void generarArbitros(int cantidad);
-		
+		public double[] dameEstadisticaArbitros();
 	}
 }

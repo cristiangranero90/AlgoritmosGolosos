@@ -37,9 +37,10 @@ public class Partido {
 			encuentroString.append("   ->   Arbitro aun no seleccionado");
 		}
 		else { 
-			encuentroString.append("   ->   Arbitro numero: " + getArbitro().getNumeroDeArbitro());
-		}
-		
+			encuentroString.append("   ->   Arbitro numero: " + 
+					getArbitro().getNumeroDeArbitro() +
+					"   " + getArbitro().getNombreDeArbitro());
+		}		
 		return encuentroString.toString().toUpperCase();
 	}
 

@@ -152,7 +152,7 @@ public class CampeonatoWindow implements Contract.View {
 
 	public void construirTabAcercaDe() {
 		Acerca = new JPanel();
-		tabsPanel.addTab("Acerca de", null, Acerca, null);
+		tabsPanel.addTab("Acerca de", null, Acerca, "Acerca de " );
 		Acerca.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Programacion III");
@@ -188,7 +188,7 @@ public class CampeonatoWindow implements Contract.View {
 		if (!existenArbitros()) {
 			System.out.println(existenArbitros());
 			DefaultPieDataset dataset = new DefaultPieDataset( );
-		    dataset.setValue("Sin datos", new Double( 100 ) );
+		    dataset.setValue("Sin datos", 100.0 );
 		    JFreeChart chart = ChartFactory.createPieChart(
 			         "Apariciones de arbitros [SIN ASIGNAR]",   // chart title
 			         dataset,          // data
@@ -199,15 +199,16 @@ public class CampeonatoWindow implements Contract.View {
 			    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
 			    tabsPanel.addTab("Grafico", null, chartPanel, null);			
 		}
+		
 		else {
 			
 			tabsPanel.setTabComponentAt(2, null);;
 			DefaultPieDataset dataset = new DefaultPieDataset( );
-		    dataset.setValue("Arbitro 1", new Double( 20 ) );
-		    dataset.setValue("Arbitro 2", new Double( 20 ) );
-		    dataset.setValue("Arbitro 3", new Double( 40 ) );
-		    dataset.setValue("Arbitro 4", new Double( 10 ) );
-
+			double[] valores = pedirEstadisticas();
+			for (int i = 0; i < valores.length ; i++) {
+				dataset.setValue("Arbitro " + (i+1), valores[i]);
+			}
+			
 		    JFreeChart chart = ChartFactory.createPieChart(
 		         "Apariciones de arbitros",   // chart title
 		         dataset,          // data
@@ -291,5 +292,10 @@ public class CampeonatoWindow implements Contract.View {
 	@Override
 	public boolean existenArbitros() {
 		return presentador.arbitrosAsignados();
+	}
+
+	@Override
+	public double[] pedirEstadisticas() {
+		return presentador.dameEstadistica();
 	}
 }

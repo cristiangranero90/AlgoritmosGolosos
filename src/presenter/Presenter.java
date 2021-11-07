@@ -62,4 +62,9 @@ public class Presenter implements Contract.Presenter {
 		};
 		generar.run();		
 	}
+
+	@Override
+	public double[] dameEstadistica() {
+		return model.dameEstadisticaArbitros();
+	}
 }

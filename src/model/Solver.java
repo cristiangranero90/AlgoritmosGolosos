@@ -79,8 +79,4 @@ public class Solver {
 	public HashMap<Arbitro, Integer> getAsignacionArbitros() {
 		return cantidadAparicionesArbitros;
 	}
-	
-	
-	
-	
 }

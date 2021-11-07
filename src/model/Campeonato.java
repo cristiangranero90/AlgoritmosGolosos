@@ -33,6 +33,26 @@ public class Campeonato implements Contract.model {
 		}
 	}	
 	
+	@Override
+	public double[] dameEstadisticaArbitros() {
+		double[] ret = new double[getCantidadArbitros()];
+		double total = 0.0;
+		int indice = 0;
+		for (Arbitro arbitro : getArbitrosDisponibles()) {
+			ret[indice] = (double) arbitro.getAparicion();
+			total += (double) arbitro.getAparicion();
+			indice++;
+		}
+		for (int i = 0; i < ret.length; i++) {
+			ret[i] = ((ret[i] / total) * 100.0) * 100.0;
+		}		
+		return ret;
+	}
+	
+	public int getCantidadArbitros() {
+		return getArbitrosDisponibles().size();
+	}
+
 	public ArrayList<Fecha> getFechas() {
 		if (this.fechas != null) {
 			return (ArrayList<Fecha>) fechas;
