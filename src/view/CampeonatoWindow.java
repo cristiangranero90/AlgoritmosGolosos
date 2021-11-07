@@ -47,24 +47,14 @@ public class CampeonatoWindow implements Contract.View {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CampeonatoWindow window = new CampeonatoWindow();
-					window.frmTp.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
 	 */
 	public CampeonatoWindow() {
 		initialize();
+		frmTp.setVisible(true);
 	}
 
 	/**
