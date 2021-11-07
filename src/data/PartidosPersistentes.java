@@ -2,10 +2,6 @@ package data;
 
 
 import com.google.gson.JsonArray;
-
-//import org.json.simple.parser.JSONParser;
-//import org.json.simple.parser.ParseException;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
@@ -20,13 +16,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-
-
-//import org.json.simple.JSONObject;
 
 public class PartidosPersistentes {
 	
