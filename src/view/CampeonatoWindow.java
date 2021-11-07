@@ -136,53 +136,7 @@ public class CampeonatoWindow implements Contract.View {
 		Calendario.setLayout(new GridLayout(10, 10, 2, 2));
 		
 		botonesCalendario = new JButton[presentador.dameCantidadFechas()];
-		for (int i = 0; i < botonesCalendario.length ; i++) {
-			JButton botonFecha = new JButton("Fecha: " + (i+1) );
-			JButton atrasOtro = new JButton("Atras");
-			final JPanel panelPartidosOtro = new JPanel();
-			panelPartidosOtro.setLayout(new GridLayout(10,10,2,2));
-			
-			
-			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {
-				
-				//panelPartidosOtro = new JPanel();				
-				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
-				nueva.setBackground(Color.WHITE);
-				panelPartidosOtro.add(nueva);				
-			}
-			
-			atrasOtro.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					//panelPartidos.setVisible(false);
-					Calendario.revalidate();
-					//Calendario.repaint();
-					tabsPanel.setComponentAt(1, Calendario);	
-					tabsPanel.repaint();
-					tabsPanel.revalidate();
-				}
-				
-			});		
-			
-			botonFecha.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					panelPartidosOtro.setEnabled(true);
-					panelPartidosOtro.setVisible(true);				
-					tabsPanel.getComponentAt(1).setVisible(false);
-					tabsPanel.setComponentAt(1, panelPartidosOtro);
-					tabsPanel.revalidate();
-				
-				}
-		    });
-			panelPartidosOtro.add(atrasOtro);
-			Calendario.add(botonFecha);
-		}
-			
-			
-		
-		
-		
+		construirCalendario();		
 		
 		//TODO Tab Panel Grafico JfreeChart
 		
@@ -238,6 +192,47 @@ public class CampeonatoWindow implements Contract.View {
 		Acerca.add(lblNewLabel_3);
 		
 		
+	}
+
+	private void construirCalendario() {
+		for (int i = 0; i < botonesCalendario.length ; i++) {
+			JButton botonFecha = new JButton("Fecha: " + (i+1) );
+			JButton atrasOtro = new JButton("Atras");
+			final JPanel panelPartidosOtro = new JPanel();
+			panelPartidosOtro.setLayout(new GridLayout(10,10,2,2));			
+			
+			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {
+						
+				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
+				nueva.setBackground(Color.WHITE);
+				panelPartidosOtro.add(nueva);				
+			}
+			
+			atrasOtro.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Calendario.revalidate();
+					tabsPanel.setComponentAt(1, Calendario);	
+					tabsPanel.repaint();
+					tabsPanel.revalidate();
+				}
+				
+			});		
+			
+			botonFecha.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					panelPartidosOtro.setEnabled(true);
+					panelPartidosOtro.setVisible(true);				
+					tabsPanel.getComponentAt(1).setVisible(false);
+					tabsPanel.setComponentAt(1, panelPartidosOtro);
+					tabsPanel.revalidate();
+				
+				}
+		    });
+			panelPartidosOtro.add(atrasOtro);
+			Calendario.add(botonFecha);
+		}
 	}
 
 	private String pedirNombrePartidos(int fechaNumero, int partidoNumero) {
