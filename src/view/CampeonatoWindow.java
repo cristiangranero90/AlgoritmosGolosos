@@ -86,7 +86,7 @@ public class CampeonatoWindow implements Contract.View {
 		
 		//Tab Calendario
 		Calendario = new JPanel();			
-		tabsPanel.addTab("Calendario", null, Calendario, null);		
+		tabsPanel.addTab("Calendario", null, Calendario, "Calendario de partidos ");		
 		Calendario.setLayout(new GridLayout(10, 10, 2, 2));	
 		
 		construirCalendario();		
@@ -107,7 +107,7 @@ public class CampeonatoWindow implements Contract.View {
 
 	public void construirTabOpciones() {
 		Opciones = new JPanel();
-		tabsPanel.addTab("Opciones", null, Opciones, null);
+		tabsPanel.addTab("Opciones", null, Opciones, "Opciones para obtener una solucion");
 		Opciones.setLayout(null);
 		
 		botonAplicar = new JButton("Aplicar");
@@ -197,7 +197,7 @@ public class CampeonatoWindow implements Contract.View {
 			         false);
 			      
 			    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-			    tabsPanel.addTab("Grafico", null, chartPanel, null);			
+			    tabsPanel.addTab("Grafico", null, chartPanel, "Muestra la estadistica en las apariciones de arbitros");			
 		}
 		
 		else {
