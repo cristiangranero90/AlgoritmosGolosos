@@ -11,7 +11,7 @@ public class Solver {
 	private HashMap<Arbitro, Integer> cantidadAparicionesArbitros;
 	private Comparator<Arbitro> estrategiaActual;
 	
-	Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
+	public Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
 		setInstanciaCampeonato(campeonato);
 		cantidadAparicionesArbitros = new HashMap<Arbitro, Integer>();
 		estrategiaActual = estrategia;
@@ -22,20 +22,23 @@ public class Solver {
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
 		
+		int indiceArbitros = 0;
 		for (Fecha unaFecha : fechasDisponibles) {	
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
-			int indiceArbitros = 0;
+			
 			for (@SuppressWarnings("unused") Partido partidoActual : unaFecha.getPartidos()) {
 				if (indiceArbitros < todosLosArbitros.size()) {
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					indiceArbitros++;
 				}
 				else {
 					indiceArbitros = 0;
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					indiceArbitros++;
 				}
 			}
 		}
@@ -76,8 +79,4 @@ public class Solver {
 	public HashMap<Arbitro, Integer> getAsignacionArbitros() {
 		return cantidadAparicionesArbitros;
 	}
-	
-	
-	
-	
 }

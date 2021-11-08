@@ -2,13 +2,8 @@ package model;
 
 import java.util.HashMap;
 
-public class Club {
+public class Club {	
 	
-	@Override
-	public String toString() {
-		return nombre ;
-	}
-
 	private String nombre;
 	private HashMap<Arbitro, Integer> arbitros;
 	
@@ -44,5 +39,10 @@ public class Club {
 		return arbitros.containsKey(nuevo);
 	}
 	
+	@Override
+	public String toString() {
+		return nombre ;
+	}
+
 	
 }

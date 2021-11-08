@@ -2,9 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Fecha  {
-	
-	
+public class Fecha  {	
 
 	private ArrayList<Partido> partidos;
 	private Integer numeroDeFecha;
@@ -25,6 +23,13 @@ public class Fecha  {
 	public ArrayList<Partido> getPartidos() {
 		return (ArrayList<Partido>) partidos;
 	}
+	
+	public Partido damePartido(int i) {
+		if (i > cantidadPartidos() || i < 0 ) {
+			throw new RuntimeException("Indice de partido invalido");
+		}
+		return getPartidos().get(i);
+	}
 
 	public Integer getNumeroDeFecha() {
 		return numeroDeFecha;
@@ -36,14 +41,31 @@ public class Fecha  {
 		}
 		else {
 			throw new RuntimeException("Numero de partido invalido. ");
-		}
-		
-		
+		}	
 	}	
+	
+	public String nombrePartido(int partidoNumero) {
+		return getPartidos().get(partidoNumero).toString();
+	}
 	
 	@Override
 	public String toString() {
 		return "  numero De Fecha  " + numeroDeFecha +"  partidos = " + partidos ;
 	}
+	
+	public boolean existenArbitros() {
+		
+		if (getPartidos().get(0).getArbitro() == null) {
+			return false;
+		}
+		else {
+			boolean ret = true;
+			for (Partido partidos : getPartidos()) {
+				ret = ret && partidos.getArbitro() != null;
+			}
+			return ret;
+		}
+	}
 
+	
 }
