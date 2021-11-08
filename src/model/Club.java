@@ -47,6 +47,27 @@ public class Club {
 	public String toString() {
 		return nombre ;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {		
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Club other = (Club) obj;
+		return this.nombre.equals(other.nombre);
+	}
+	
+	
+	
 
 	
 }

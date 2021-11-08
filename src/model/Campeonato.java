@@ -1,7 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Iterator;
 import presenter.Contract;
 
 public class Campeonato implements Contract.model {
@@ -11,6 +12,7 @@ public class Campeonato implements Contract.model {
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
 	private ArrayList<String> nombresDisponibles;
+	private HashMap<Club, Integer> aparicionesPorClub;
 
 	public Campeonato(Contract.Presenter presenter) {
 		
@@ -18,12 +20,15 @@ public class Campeonato implements Contract.model {
 		this.arbitrosDisponibles = new ArrayList<>();
 		this.presentador = presenter;
 		nombresDisponibles = new ArrayList<>();
+		aparicionesPorClub = new HashMap<>();
+		
 	}
 	
 	public Campeonato() {
 		this.fechas = new ArrayList<>();
 		this.arbitrosDisponibles = new ArrayList<>();
 		nombresDisponibles = new ArrayList<String>();
+		aparicionesPorClub = new HashMap<>();
 	}
 	
 	@Override
@@ -35,22 +40,58 @@ public class Campeonato implements Contract.model {
 				indice++;
 			}
 		}
+		aparicionesPorClub = solucionGenerada.getAparicionesClub();
 	}	
 	
 	@Override
 	public double[] dameEstadisticaArbitros() {
-		double[] ret = new double[getCantidadArbitros()];
-		double total = 0.0;
-		int indice = 0;
-		for (Arbitro arbitro : getArbitrosDisponibles()) {
-			ret[indice] = (double) arbitro.getAparicion();
-			total += (double) arbitro.getAparicion();
-			indice++;
+		return generarEstadistica();
+	}
+	
+	@Override
+	public String[] dameNombresDeClub() {
+		return generarNombres();
+	}
+	
+	private String[] generarNombres() {
+		String[] ret = new String[aparicionesPorClub.size()];
+		if(aparicionesPorClub.size() > 0) {
+			Iterator<Club> ite = aparicionesPorClub.keySet().iterator();
+			int indice = 0;
+			while(ite.hasNext()) {
+				String nombre = ite.next().getNombre();
+				ret[indice] = nombre;
+				indice++;
+			}
+			return ret;
 		}
-		for (int i = 0; i < ret.length; i++) {
-			ret[i] = ((ret[i] / total) * 100.0) * 100.0;
-		}		
-		return ret;
+		else {
+			throw new RuntimeException("No existen clubs creados actualmente. ");
+		}
+	}
+	
+	public double[] generarEstadistica() {
+		if (aparicionesPorClub.size() > 0) {
+			Iterator<Integer> ite = aparicionesPorClub.values().iterator();		
+			double[] conjunto = new double[aparicionesPorClub.values().size()];
+			double total = 0.0;
+			int indice = 0;
+			while(ite.hasNext()) {
+				Integer aux = ite.next();
+				conjunto[indice] = (double) aux;
+				total = total + (double) aux;
+				indice++;
+			}
+			for (int i = 0; i < conjunto.length ; i++) {
+				System.out.println(conjunto[i] + " total " +total);
+				conjunto[i] = ((conjunto[i] / total) * 100.0) * 100.0;
+				
+			}
+			return conjunto;
+		}
+		else {
+			throw new RuntimeException("No se pudo generar una estadistica. ");
+		}
 	}
 	
 	public int getCantidadArbitros() {

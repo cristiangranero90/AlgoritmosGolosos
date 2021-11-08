@@ -78,4 +78,9 @@ public class Presenter implements Contract.Presenter {
 	public void construirArbitros(boolean nombres, int cantidad) {
 		model.generarArbitros(nombres, cantidad);		
 	}
+
+	@Override
+	public String[] dameClubs() {
+		return model.dameNombresDeClub();
+	}
 }

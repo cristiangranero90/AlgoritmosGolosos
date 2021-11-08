@@ -160,11 +160,11 @@ public class CampeonatoWindow implements Contract.View {
 		slider = new JSlider();
 		slider.setPaintLabels(true);
 		slider.setSnapToTicks(true);
-		slider.setMaximum(50);
+		slider.setMaximum(45);
 		slider.setPaintTicks(true);
-		slider.setMinorTickSpacing(5);
-		slider.setMajorTickSpacing(5);
-		slider.setMinimum(5);
+		slider.setMinorTickSpacing(3);
+		slider.setMajorTickSpacing(6);
+		slider.setMinimum(3);
 		slider.setBounds(403, 160, 310, 41);
 		Opciones.add(slider);		
 		
@@ -218,11 +218,10 @@ public class CampeonatoWindow implements Contract.View {
 	public void construirGrafico() {
 				
 		if (!existenArbitros()) {
-			//System.out.println(existenArbitros());
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 		    dataset.setValue("Sin datos", 100.0 );
 		    JFreeChart chart = ChartFactory.createPieChart(
-			         "Apariciones de arbitros [SIN ASIGNAR]",   // chart title
+			         "Repeticiones de arbitros por Club [SIN ASIGNAR]",   // chart title
 			         dataset,          // data
 			         true,             // include legend
 			         true,
@@ -237,12 +236,14 @@ public class CampeonatoWindow implements Contract.View {
 			tabsPanel.setTabComponentAt(2, null);;
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 			double[] valores = pedirEstadisticas();
-			for (int i = 0; i < valores.length ; i++) {
-				dataset.setValue("Arbitro " + (i+1), valores[i]);
+			String[] nombres = pedirNombres();
+			
+			for (int i = 0; i < nombres.length ; i++) {
+				dataset.setValue(nombres[i] , valores[i]);
 			}
 			
 		    JFreeChart chart = ChartFactory.createPieChart(
-		         "Apariciones de arbitros",   // chart title
+		         "Apariciones de arbitros por Club",   // chart title
 		         dataset,          // data
 		         true,             // include legend
 		         true,
@@ -253,6 +254,11 @@ public class CampeonatoWindow implements Contract.View {
 		    
 		}
 		
+	}
+
+	@Override
+	public String[] pedirNombres() {		
+		return presentador.dameClubs();
 	}
 
 	@Override

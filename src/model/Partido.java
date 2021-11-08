@@ -1,23 +1,21 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Partido {
 	
-	private Map<Club,Club> encuentro;
+	private Club[] encuentro;
 	private Arbitro arbitro;
 	private Club _club1;
 	private Club _club2;
 	
 	public Partido(Club uno, Club dos) {
-		encuentro = new HashMap <Club,Club>();
-		encuentro.put(uno, dos);
+		encuentro = new Club[2];
+		encuentro[0] = uno;
+		encuentro[1] = dos;
 		_club1=uno;
 		_club2=dos;
 	}
 	
-	public Map<Club,Club> getEncuentro() {
+	public Club[] getEncuentro() {
 		return encuentro;
 	}
 	
@@ -29,19 +27,10 @@ public class Partido {
 	@Override
 	public String toString() {
 		StringBuilder encuentroString = new StringBuilder();
-		for (int i = 0; i < getEncuentro().toString().length(); i++) {
-			if (getEncuentro().toString().charAt(i) != '{' && 
-					getEncuentro().toString().charAt(i) != '}' &&
-					getEncuentro().toString().charAt(i) != '=') {
-				
-				encuentroString.append(getEncuentro().toString().charAt(i));
-			}
+		for (int i = 0; i < getEncuentro().length; i++) {
 			
-			else if (getEncuentro().toString().charAt(i) == '=') {
-				encuentroString.append("  -  ");
-			}			
-		}
-		
+			encuentroString.append(getEncuentro()[i].toString().toUpperCase() + "    ");
+		}		
 		if (getArbitro() == null) {
 			encuentroString.append("   ->   Arbitro aun no seleccionado");
 		}

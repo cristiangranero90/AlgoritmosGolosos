@@ -13,7 +13,7 @@ public class Solver {
 	
 	public Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
 		setInstanciaCampeonato(campeonato);
-		cantidadAparicionesArbitros = new HashMap<Arbitro, Integer>();
+		cantidadAparicionesArbitros = new HashMap<>();
 		estrategiaActual = estrategia;
 	}
 	
@@ -26,8 +26,12 @@ public class Solver {
 		for (Fecha unaFecha : fechasDisponibles) {	
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
 			
-			for (@SuppressWarnings("unused") Partido partidoActual : unaFecha.getPartidos()) {
-				if (indiceArbitros < todosLosArbitros.size()) {
+			for (Partido partidoActual : unaFecha.getPartidos()) {
+				if (indiceArbitros < todosLosArbitros.size()) {			
+					
+					ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
+					ret.agregarAparicionesClub(partidoActual.getEncuentro()[1]);
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
@@ -35,6 +39,9 @@ public class Solver {
 				}
 				else {
 					indiceArbitros = 0;
+					ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
+					ret.agregarAparicionesClub(partidoActual.getEncuentro()[1]);
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
@@ -60,6 +67,7 @@ public class Solver {
 		}		
 	}
 	public void agregarAparicionesArbitro(Arbitro nuevoArbitro) {
+		
 		if (nuevoArbitro == null) {
 			throw new RuntimeException("El arbitro ingresado no existe. ");
 		}
