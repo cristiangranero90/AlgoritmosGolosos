@@ -1,6 +1,6 @@
 package model;
 
-public class ordenarPorAparicion extends Ordenar{
+public class OrdenarPorAparicion extends Ordenar{
 
 	@Override
 	public int compare(Arbitro uno, Arbitro otro) {

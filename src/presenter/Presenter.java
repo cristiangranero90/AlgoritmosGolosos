@@ -5,8 +5,8 @@ import model.Campeonato;
 import model.Ordenar;
 import model.Solucion;
 import model.Solver;
-import model.ordenarPorAparicion;
-import model.ordenarPorCondecoracion;
+import model.OrdenarPorAparicion;
+import model.OrdenarPorPremiacion;
 
 public class Presenter implements Contract.Presenter {
 
@@ -44,10 +44,10 @@ public class Presenter implements Contract.Presenter {
 		
 		switch (selectedItem) {
 			
-			case "Heuristica por apariciones" : generarSolucion(new ordenarPorAparicion());
+			case "Heuristica por apariciones" : generarSolucion(new OrdenarPorAparicion());
 			break;
 			
-			case "Heuristica por premiacion" : generarSolucion(new ordenarPorCondecoracion());
+			case "Heuristica por premiacion" : generarSolucion(new OrdenarPorPremiacion());
 			break;
 			
 			default : throw new RuntimeException("Elemento invalido. ");		
