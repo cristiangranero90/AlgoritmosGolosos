@@ -234,7 +234,7 @@ public class CampeonatoWindow implements Contract.View {
 		else {
 			
 			tabsPanel.setTabComponentAt(2, null);;
-			DefaultPieDataset dataset = new DefaultPieDataset( );
+			DefaultPieDataset dataset = new DefaultPieDataset();
 			double[] valores = pedirEstadisticas();
 			String[] nombres = pedirNombres();
 			
