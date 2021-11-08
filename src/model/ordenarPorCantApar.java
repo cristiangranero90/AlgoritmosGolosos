@@ -2,16 +2,10 @@ package model;
 
 import java.util.Comparator;
 
-public class ordenarPorCantApar implements Comparator<Arbitro>{
-	
-	
+public class ordenarPorCantApar extends Ordenar{
+
 	@Override
-	public int compare(Arbitro uno, Arbitro otro) {
-		// TODO Auto-generated method stub
+	public int compare(Arbitro uno, Arbitro otro) {		
 		return  -uno.getNumeroDeArbitro()+ otro.getNumeroDeArbitro();
 	}
-	
-
-
-
 }

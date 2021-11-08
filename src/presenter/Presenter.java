@@ -2,6 +2,7 @@ package presenter;
 
 import data.PartidosPersistentes;
 import model.Campeonato;
+import model.Ordenar;
 import model.Solucion;
 import model.Solver;
 import model.ordenarPorAparicion;
@@ -43,44 +44,29 @@ public class Presenter implements Contract.Presenter {
 		
 		switch (selectedItem) {
 			
-			case "Heuristica por apariciones" : generarSolucion();
+			case "Heuristica por apariciones" : generarSolucion(new ordenarPorAparicion());
 			break;
 			
-			case "Heuristica por otro criterio" : generarSolucion2();
+			case "Heuristica por otro criterio" : generarSolucion(new ordenarPorCantApar());
 			break;
 			
 			default : throw new RuntimeException("Elemento invalido. ");		
 		}		
 	}
 
-	private void generarSolucion() {		
+	private void generarSolucion(Ordenar criterio) {		
 		//Thread generarSolucion
 		Runnable generar = new Runnable() {
 			@Override
 			public void run() {
-				Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
+				Solver solver = new Solver((Campeonato) model, criterio);
 				Solucion solucion = solver.resolver();
 				model.asignarSolucion(solucion);
 				view.construirGrafico();
 				view.construirCalendario();				
-			}			
+			}
 		};
-		generar.run();		
-	}
-	
-	private void generarSolucion2() {		
-		//Thread generarSolucion
-		Runnable generar = new Runnable() {
-			@Override
-			public void run() {
-				Solver solver = new Solver((Campeonato) model, new ordenarPorCantApar());
-				Solucion solucion = solver.resolver();
-				model.asignarSolucion(solucion);
-				view.construirGrafico();
-				view.construirCalendario();				
-			}			
-		};
-		generar.run();		
+		generar.run();			
 	}
 
 	@Override
