@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Comparator;
-
 public class ordenarPorCantApar extends Ordenar{
 
 	@Override
