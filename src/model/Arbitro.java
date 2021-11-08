@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class Arbitro {
 
@@ -8,12 +9,14 @@ public class Arbitro {
 	private String nombreDeArbitro;	
 	private HashMap<Club, Integer> aparicionesPorClub;
 	private int aparicion;
+	private int condecoracion;
 	
 	public Arbitro(int arbitroNumero, String nombre) {
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
 		aparicion = 0;
-		aparicionesPorClub = new HashMap<>();		
+		aparicionesPorClub = new HashMap<>();	
+		condecoracion = dameCondecoracionRandom();
 	}
 	
 	public Arbitro(int arbitroNumero) {
@@ -21,6 +24,7 @@ public class Arbitro {
 		nombreDeArbitro = "";
 		aparicion = 0;
 		aparicionesPorClub = new HashMap<>();
+		condecoracion = dameCondecoracionRandom();
 	}
 	
 	public boolean existeClub(Club club) {
@@ -34,6 +38,11 @@ public class Arbitro {
 		else {
 			aparicionesPorClub.put(club, 1);
 		}		
+	}
+
+	private int dameCondecoracionRandom() {
+		Random ran = new Random();
+		return ran.nextInt(1, 50);
 	}
 
 	public Integer getNumeroDeArbitro() {
@@ -57,6 +66,20 @@ public class Arbitro {
 	public void setAparicion(int aparicion) {
 		this.aparicion = aparicion;
 	}
+
+	public int getCondecoracion() {
+		return condecoracion;
+	}
+
+	public void setCondecoracion(int condecoracion) {
+		this.condecoracion = getCondecoracion() + condecoracion;
+	}
+
+	public HashMap<Club, Integer> getAparicionesPorClub() {
+		return aparicionesPorClub;
+	}
+	
+	
 	
 	
 }

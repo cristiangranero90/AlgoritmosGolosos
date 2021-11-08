@@ -30,7 +30,8 @@ public class Solver {
 			
 			for (Partido partidoActual : unaFecha.getPartidos()) {
 				if (indiceArbitros < todosLosArbitros.size()) {						
-					revisarClubConArbitro(ret, partidoActual);						
+					revisarClubConArbitro(ret, partidoActual);
+					todosLosArbitros.get(indiceArbitros).setCondecoracion(-2);
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
@@ -38,8 +39,9 @@ public class Solver {
 					indiceArbitros++;
 				}
 				
-				else {
-					indiceArbitros = 0;				
+				else {					
+					indiceArbitros = 0;		
+					todosLosArbitros.get(indiceArbitros).setCondecoracion(-2);
 					revisarClubConArbitro(ret, partidoActual);						
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
