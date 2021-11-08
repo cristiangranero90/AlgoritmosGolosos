@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
 @SuppressWarnings("serial")
 public class Exito extends JDialog {
