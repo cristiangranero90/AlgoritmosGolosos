@@ -39,6 +39,10 @@ public class Club {
 		return arbitros.containsKey(nuevo);
 	}
 	
+	public int dameCantidadApariciones (Arbitro _arbitro) {
+		return arbitros.get(_arbitro).intValue();
+	}
+	
 	@Override
 	public String toString() {
 		return nombre ;

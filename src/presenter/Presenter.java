@@ -5,6 +5,7 @@ import model.Campeonato;
 import model.Solucion;
 import model.Solver;
 import model.ordenarPorAparicion;
+import model.ordenarPorCantApar;
 
 public class Presenter implements Contract.Presenter {
 
@@ -20,6 +21,7 @@ public class Presenter implements Contract.Presenter {
 	@Override
 	public int dameCantidadFechas() {
 		return model.cantidadDeFechas();
+		
 	}
 
 	@Override
@@ -44,6 +46,9 @@ public class Presenter implements Contract.Presenter {
 			case "Heuristica por apariciones" : generarSolucion();
 			break;
 			
+			case "Heuristica por otro criterio" : generarSolucion2();
+			break;
+			
 			default : throw new RuntimeException("Elemento invalido. ");		
 		}		
 	}
@@ -54,6 +59,21 @@ public class Presenter implements Contract.Presenter {
 			@Override
 			public void run() {
 				Solver solver = new Solver((Campeonato) model, new ordenarPorAparicion());
+				Solucion solucion = solver.resolver();
+				model.asignarSolucion(solucion);
+				view.construirGrafico();
+				view.construirCalendario();				
+			}			
+		};
+		generar.run();		
+	}
+	
+	private void generarSolucion2() {		
+		//Thread generarSolucion
+		Runnable generar = new Runnable() {
+			@Override
+			public void run() {
+				Solver solver = new Solver((Campeonato) model, new ordenarPorCantApar());
 				Solucion solucion = solver.resolver();
 				model.asignarSolucion(solucion);
 				view.construirGrafico();
