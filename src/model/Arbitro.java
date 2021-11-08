@@ -37,7 +37,7 @@ public class Arbitro {
 	}
 
 	public Integer getNumeroDeArbitro() {
-		return numeroDeArbitro;
+		return numeroDeArbitro + 1;
 	}
 
 	public void setNumeroDeArbitro(Integer numeroDeArbitro) {

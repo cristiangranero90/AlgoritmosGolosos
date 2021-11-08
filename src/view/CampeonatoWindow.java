@@ -221,14 +221,14 @@ public class CampeonatoWindow implements Contract.View {
 			DefaultPieDataset dataset = new DefaultPieDataset( );
 		    dataset.setValue("Sin datos", 100.0 );
 		    JFreeChart chart = ChartFactory.createPieChart(
-			         "Repeticiones de arbitros por Club [SIN ASIGNAR]",   // chart title
+			         "Repeticiones de arbitros por club [SIN ASIGNAR]",   // chart title
 			         dataset,          // data
 			         true,             // include legend
 			         true,
 			         false);
 			      
 			    ChartPanel chartPanel = new ChartPanel(chart)  ;	    
-			    tabsPanel.addTab("Grafico", null, chartPanel, "Muestra la estadistica en las apariciones de arbitros");			
+			    tabsPanel.addTab("Grafico", null, chartPanel, "Muestra la estadistica de las apariciones de arbitros");			
 		}
 		
 		else {
@@ -243,7 +243,7 @@ public class CampeonatoWindow implements Contract.View {
 			}
 			
 		    JFreeChart chart = ChartFactory.createPieChart(
-		         "Apariciones de arbitros por Club",   // chart title
+		         "Repeticiones de arbitros por cada club",   // chart title
 		         dataset,          // data
 		         true,             // include legend
 		         true,
