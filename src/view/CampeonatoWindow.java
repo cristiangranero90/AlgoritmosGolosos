@@ -156,9 +156,6 @@ public class CampeonatoWindow implements Contract.View {
 		checkBoxNombres.setBounds(500, 218, 111, 23);
 		Opciones.add(checkBoxNombres);
 		
-		
-		//checkBoxNombres.isSelected()
-		
 		slider = new JSlider();
 		slider.setPaintLabels(true);
 		slider.setSnapToTicks(true);
@@ -168,17 +165,11 @@ public class CampeonatoWindow implements Contract.View {
 		slider.setMajorTickSpacing(5);
 		slider.setMinimum(5);
 		slider.setBounds(403, 160, 310, 41);
-		Opciones.add(slider);
-		
+		Opciones.add(slider);		
 		
 		JLabel labelCantArbitros = new JLabel("Cantidad de arbitros");
 		labelCantArbitros.setBounds(510, 135, 111, 14);
 		Opciones.add(labelCantArbitros);
-	}
-
-	protected void botonAplicarPresionado(String selectedItem) {
-		crearArbitros(checkBoxNombres.isSelected(), slider.getValue());
-		presentador.botonAplicar(selectedItem);		
 	}
 
 	public void construirTabAcercaDe() {
@@ -303,6 +294,11 @@ public class CampeonatoWindow implements Contract.View {
 			panelPartidosOtro.add(atrasOtro);
 			Calendario.add(botonFecha);
 		}
+	}
+
+	protected void botonAplicarPresionado(String selectedItem) {
+		crearArbitros(checkBoxNombres.isSelected(), slider.getValue());
+		presentador.botonAplicar(selectedItem);		
 	}
 
 	@Override
