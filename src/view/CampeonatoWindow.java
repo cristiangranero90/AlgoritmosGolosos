@@ -45,6 +45,7 @@ public class CampeonatoWindow implements Contract.View {
 	private JPanel Acerca;
 	private JCheckBox checkBoxNombres;
 	private JSlider slider;
+	private JButton botonSalir;
 
 	/**
 	 * Create the application.
@@ -170,6 +171,15 @@ public class CampeonatoWindow implements Contract.View {
 		JLabel labelCantArbitros = new JLabel("Cantidad de arbitros");
 		labelCantArbitros.setBounds(510, 135, 111, 14);
 		Opciones.add(labelCantArbitros);
+		
+		botonSalir = new JButton("Salir");
+		botonSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmTp.dispose();
+			}
+		});
+		botonSalir.setBounds(486, 293, 135, 23);
+		Opciones.add(botonSalir);
 	}
 
 	public void construirTabAcercaDe() {
