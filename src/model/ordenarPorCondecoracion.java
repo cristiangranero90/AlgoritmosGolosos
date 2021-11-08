@@ -4,6 +4,6 @@ public class ordenarPorCondecoracion extends Ordenar{
 
 	@Override
 	public int compare(Arbitro uno, Arbitro otro) {	
-		return uno.getCondecoracion() - otro.getCondecoracion();
+		return uno.getPremios() - otro.getPremios();
 	}
 }

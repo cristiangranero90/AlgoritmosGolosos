@@ -47,7 +47,7 @@ public class Presenter implements Contract.Presenter {
 			case "Heuristica por apariciones" : generarSolucion(new ordenarPorAparicion());
 			break;
 			
-			case "Heuristica por otro criterio" : generarSolucion(new ordenarPorCondecoracion());
+			case "Heuristica por premiacion" : generarSolucion(new ordenarPorCondecoracion());
 			break;
 			
 			default : throw new RuntimeException("Elemento invalido. ");		

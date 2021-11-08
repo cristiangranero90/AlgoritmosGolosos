@@ -9,14 +9,14 @@ public class Arbitro {
 	private String nombreDeArbitro;	
 	private HashMap<Club, Integer> aparicionesPorClub;
 	private int aparicion;
-	private int condecoracion;
+	private int premios;
 	
 	public Arbitro(int arbitroNumero, String nombre) {
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
 		aparicion = 0;
 		aparicionesPorClub = new HashMap<>();	
-		condecoracion = dameCondecoracionRandom();
+		premios = dameCondecoracionRandom();
 	}
 	
 	public Arbitro(int arbitroNumero) {
@@ -24,7 +24,7 @@ public class Arbitro {
 		nombreDeArbitro = "";
 		aparicion = 0;
 		aparicionesPorClub = new HashMap<>();
-		condecoracion = dameCondecoracionRandom();
+		premios = dameCondecoracionRandom();
 	}
 	
 	public boolean existeClub(Club club) {
@@ -67,12 +67,12 @@ public class Arbitro {
 		this.aparicion = aparicion;
 	}
 
-	public int getCondecoracion() {
-		return condecoracion;
+	public int getPremios() {
+		return premios;
 	}
 
-	public void setCondecoracion(int condecoracion) {
-		this.condecoracion = getCondecoracion() + condecoracion;
+	public void setPremios(int condecoracion) {
+		this.premios = getPremios() + condecoracion;
 	}
 
 	public HashMap<Club, Integer> getAparicionesPorClub() {
