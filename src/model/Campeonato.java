@@ -83,7 +83,7 @@ public class Campeonato implements Contract.model {
 				indice++;
 			}			
 			for (int i = 0; i < conjunto.length ; i++) {
-				conjunto[i] = ((conjunto[i] / total) * 100.0) * 100.0;
+				conjunto[i] = ((conjunto[i] / total) * 100.0);
 			}
 			return conjunto;
 		}
