@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Solver {
 	
 	private Campeonato instanciaCampeonato;
-	private HashMap<Arbitro, Integer> cantidadAparicionesArbitros;
+	private HashMap<Club, Arbitro> cantidadAparicionesArbitros;
 	private Comparator<Arbitro> estrategiaActual;
 	
 	public Solver(Campeonato campeonato, Comparator<Arbitro> estrategia){
@@ -18,38 +18,47 @@ public class Solver {
 	}
 	
 	public Solucion resolver() {
+		
 		Solucion ret = new Solucion();
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
-		
 		int indiceArbitros = 0;
+		
+		
 		for (Fecha unaFecha : fechasDisponibles) {	
 			todosLosArbitros = ordenarArbitros(todosLosArbitros);
 			
 			for (Partido partidoActual : unaFecha.getPartidos()) {
-				if (indiceArbitros < todosLosArbitros.size()) {			
-					
-					ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
-					ret.agregarAparicionesClub(partidoActual.getEncuentro()[1]);
-					
+				if (indiceArbitros < todosLosArbitros.size()) {						
+					revisarClubConArbitro(ret, partidoActual);						
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
+				
 				else {
-					indiceArbitros = 0;
-					ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
-					ret.agregarAparicionesClub(partidoActual.getEncuentro()[1]);
-					
+					indiceArbitros = 0;				
+					revisarClubConArbitro(ret, partidoActual);						
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
 			}
 		}
 		return ret;
+	}
+
+	private void revisarClubConArbitro(Solucion ret, Partido partidoActual) {
+		if(cantidadAparicionesArbitros.containsKey(partidoActual.getEncuentro()[0])){
+			ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
+		}
+		if(cantidadAparicionesArbitros.containsKey(partidoActual.getEncuentro()[1])){
+			ret.agregarAparicionesClub(partidoActual.getEncuentro()[1]);
+		}
 	}	
 
 	public ArrayList<Arbitro> ordenarArbitros(ArrayList<Arbitro> arbitrosDisponibles) {
@@ -66,25 +75,20 @@ public class Solver {
 			throw new RuntimeException("El campeonato recibido por parametro esta vacion. ");
 		}		
 	}
-	public void agregarAparicionesArbitro(Arbitro nuevoArbitro) {
+	public void agregarAparicionesArbitro(Club club, Arbitro arbitro) {
 		
-		if (nuevoArbitro == null) {
+		if (club == null) {
 			throw new RuntimeException("El arbitro ingresado no existe. ");
 		}
-		else {
-			if (getAsignacionArbitros().containsKey(nuevoArbitro)) {
-				getAsignacionArbitros().replace(nuevoArbitro, getAsignacionArbitros().get(nuevoArbitro) + 1);
-			}
-			else {
-				getAsignacionArbitros().put(nuevoArbitro, 1);
-			}
+		else {			
+			getAsignacionArbitros().put(club, arbitro);			
 		}
 	}
 	
 	public Campeonato getInstanciaCampeonato() {
 		return instanciaCampeonato;
 	}
-	public HashMap<Arbitro, Integer> getAsignacionArbitros() {
+	public HashMap<Club, Arbitro> getAsignacionArbitros() {
 		return cantidadAparicionesArbitros;
 	}
 }
