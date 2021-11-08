@@ -298,7 +298,9 @@ public class CampeonatoWindow implements Contract.View {
 
 	protected void botonAplicarPresionado(String selectedItem) {
 		crearArbitros(checkBoxNombres.isSelected(), slider.getValue());
-		presentador.botonAplicar(selectedItem);		
+		presentador.botonAplicar(selectedItem);
+		Exito nuevo = new Exito();
+		nuevo.habilitar();
 	}
 
 	@Override
