@@ -126,13 +126,16 @@ public class Campeonato implements Contract.model {
 
 	@Override
 	public void generarArbitros(boolean nombres, int cantidad) {
+		System.out.println(nombres + " bool");
 		if (!nombres) {
+			System.out.println("Sin nombres");
 			for (int i = 0; i < cantidad; i++) {
 				Arbitro nuevo = new Arbitro(i, "Sin nombre");
 				arbitrosDisponibles.add(nuevo);
 			}	
 		}
 		else {
+			System.out.println("Con nombres");
 			arbitrosDisponibles = new ArrayList<>();
 			nombresDisponibles = data.PartidosPersistentes.leerNombres();
 			for (int i = 0; i < cantidad; i++) {

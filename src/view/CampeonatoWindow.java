@@ -157,7 +157,7 @@ public class CampeonatoWindow implements Contract.View {
 		Opciones.add(checkBoxNombres);
 		
 		
-		//checkBoxNombres.isSelected();
+		//checkBoxNombres.isSelected()
 		
 		slider = new JSlider();
 		slider.setPaintLabels(true);
@@ -177,7 +177,7 @@ public class CampeonatoWindow implements Contract.View {
 	}
 
 	protected void botonAplicarPresionado(String selectedItem) {
-		crearArbitros(checkBoxNombres.isEnabled(), slider.getValue());
+		crearArbitros(checkBoxNombres.isSelected(), slider.getValue());
 		presentador.botonAplicar(selectedItem);		
 	}
 
