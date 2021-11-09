@@ -7,10 +7,12 @@ public class Solucion {
 
 	private ArrayList<Arbitro> arbitrosSeleccionados;
 	private HashMap<Club, Integer> cantidadAparicionesClub;
+	private int arbitrosTotal;
 	
 	public Solucion() {
 		arbitrosSeleccionados = new ArrayList<>();
 		cantidadAparicionesClub = new HashMap<>();
+		this.arbitrosTotal = 0;
 	}
 	
 	public void agregarArbitroSolucion(Arbitro nuevoarbitro) {
@@ -56,5 +58,15 @@ public class Solucion {
 	public int tamanoAparicionesArbitro() {
 		return cantidadAparicionesClub.size();
 	}
+
+	public int getArbitrosTotal() {
+		return arbitrosTotal;
+	}
+
+	public void setArbitrosTotal(int arbitrosTotal) {
+		this.arbitrosTotal = arbitrosTotal;
+	}
+	
+	
 	
 }

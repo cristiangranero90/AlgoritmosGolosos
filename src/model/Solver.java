@@ -22,6 +22,7 @@ public class Solver {
 		Solucion ret = new Solucion();
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
+		ret.setArbitrosTotal(todosLosArbitros.size());
 		int indiceArbitros = 0;
 		
 		
@@ -32,7 +33,9 @@ public class Solver {
 				if (indiceArbitros < todosLosArbitros.size()) {						
 					agregarClubArbitro(ret, partidoActual);
 					
-					todosLosArbitros.get(indiceArbitros).setPremios(-2);
+					todosLosArbitros.get(indiceArbitros).setPremios(1);
+					
+					agregarPartidosArbitros(todosLosArbitros, indiceArbitros, partidoActual);
 					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					
@@ -46,9 +49,11 @@ public class Solver {
 				else {					
 					indiceArbitros = 0;	
 					
+					agregarPartidosArbitros(todosLosArbitros, indiceArbitros, partidoActual);
+					
 					agregarClubArbitro(ret, partidoActual);
 					
-					todosLosArbitros.get(indiceArbitros).setPremios(-2);					
+					todosLosArbitros.get(indiceArbitros).setPremios(1);					
 					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
 					
@@ -60,7 +65,14 @@ public class Solver {
 				}
 			}
 		}
+		
 		return ret;
+	}
+
+	private void agregarPartidosArbitros(ArrayList<Arbitro> todosLosArbitros, int indiceArbitros,
+			Partido partidoActual) {
+		todosLosArbitros.get(indiceArbitros).agregarApariciones(partidoActual.getEncuentro()[0]);
+		todosLosArbitros.get(indiceArbitros).agregarApariciones(partidoActual.getEncuentro()[1]);
 	}
 
 	private void agregarClubArbitro(Solucion ret, Partido partidoActual) {
