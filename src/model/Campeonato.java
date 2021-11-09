@@ -68,14 +68,14 @@ public class Campeonato implements Contract.model {
 			return ret;
 		}
 		else {
-			throw new RuntimeException("No existen clubs creados actualmente. ");
+			throw new RuntimeException("No hay clubs creados actualmente. ");
 		}
 	}
 	
 	public double[] generarEstadistica() {
 		if (aparicionesPorClub.size() > 0) {
 			Iterator<Integer> ite = aparicionesPorClub.values().iterator();		
-			double[] conjunto = new double[arbitrosDisponibles.size() + 1];
+			double[] conjunto = new double[aparicionesPorClub.values().size() + 1];
 			double total = 0.0;
 			int indice = 0;
 			while(ite.hasNext()) {
