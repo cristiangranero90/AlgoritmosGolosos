@@ -30,22 +30,31 @@ public class Solver {
 			
 			for (Partido partidoActual : unaFecha.getPartidos()) {
 				if (indiceArbitros < todosLosArbitros.size()) {						
-					revisarClubConArbitro(ret, partidoActual);
+					agregarClubArbitro(ret, partidoActual);
+					
 					todosLosArbitros.get(indiceArbitros).setPremios(-2);
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					
 					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
 				
 				else {					
-					indiceArbitros = 0;		
-					todosLosArbitros.get(indiceArbitros).setPremios(-2);
-					revisarClubConArbitro(ret, partidoActual);						
+					indiceArbitros = 0;	
+					
+					agregarClubArbitro(ret, partidoActual);
+					
+					todosLosArbitros.get(indiceArbitros).setPremios(-2);					
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					
 					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
@@ -54,7 +63,7 @@ public class Solver {
 		return ret;
 	}
 
-	private void revisarClubConArbitro(Solucion ret, Partido partidoActual) {
+	private void agregarClubArbitro(Solucion ret, Partido partidoActual) {
 		if(cantidadAparicionesArbitros.containsKey(partidoActual.getEncuentro()[0])){
 			ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
 		}
