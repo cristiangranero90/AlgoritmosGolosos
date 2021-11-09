@@ -129,8 +129,6 @@ public class CampeonatoWindow implements Contract.View {
 		comboCriterio.setBounds(446, 101, 228, 23);
 		comboCriterio.addItem("Heuristica por apariciones");
 		comboCriterio.addItem("Heuristica por premiacion");
-		comboCriterio.addItem("Fuerza Bruta");
-		comboCriterio.addItem("Backtracking");
 		Opciones.add(comboCriterio);
 		
 		labelCriterio = new JLabel("Seleccione  criterio:");
