@@ -5,9 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import presenter.Contract;
 
+@SuppressWarnings("unused")
 public class Campeonato implements Contract.model {
 	
-	@SuppressWarnings("unused")
+	
 	private Contract.Presenter presentador;
 	private ArrayList<Fecha> fechas;
 	private ArrayList<Arbitro> arbitrosDisponibles;
@@ -54,7 +55,7 @@ public class Campeonato implements Contract.model {
 	}
 	
 	private String[] generarNombres() {
-		String[] ret = new String[aparicionesPorClub.size()];
+		String[] ret = new String[aparicionesPorClub.size() + 1];
 		if(aparicionesPorClub.size() > 0) {
 			Iterator<Club> ite = aparicionesPorClub.keySet().iterator();
 			int indice = 0;
@@ -63,17 +64,18 @@ public class Campeonato implements Contract.model {
 				ret[indice] = nombre;
 				indice++;
 			}
+			ret[indice] = "Sin repetir";
 			return ret;
 		}
 		else {
-			throw new RuntimeException("No existen clubs creados actualmente. ");
+			throw new RuntimeException("No hay clubs creados actualmente. ");
 		}
 	}
 	
 	public double[] generarEstadistica() {
 		if (aparicionesPorClub.size() > 0) {
 			Iterator<Integer> ite = aparicionesPorClub.values().iterator();		
-			double[] conjunto = new double[aparicionesPorClub.values().size()];
+			double[] conjunto = new double[aparicionesPorClub.values().size() + 1];
 			double total = 0.0;
 			int indice = 0;
 			while(ite.hasNext()) {
@@ -81,10 +83,12 @@ public class Campeonato implements Contract.model {
 				total = total + (double) aux;
 				conjunto[indice] = (double) aux;				
 				indice++;
-			}			
-			for (int i = 0; i < conjunto.length ; i++) {
-				conjunto[i] = ((conjunto[i] / total) * 100.0);
 			}
+			total += (double) arbitrosDisponibles.size();
+			for (int i = 0; i < conjunto.length-1 ; i++) {
+				conjunto[i] = ((conjunto[i] / total) * 100.0);				
+			}
+			conjunto[indice] = (double) arbitrosDisponibles.size() / total;
 			return conjunto;
 		}
 		else {

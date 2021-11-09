@@ -22,6 +22,7 @@ public class Solver {
 		Solucion ret = new Solucion();
 		ArrayList<Arbitro> todosLosArbitros = getInstanciaCampeonato().getArbitrosDisponibles();
 		ArrayList<Fecha> fechasDisponibles = getInstanciaCampeonato().getFechas();
+		ret.setArbitrosTotal(todosLosArbitros.size());
 		int indiceArbitros = 0;
 		
 		
@@ -30,31 +31,51 @@ public class Solver {
 			
 			for (Partido partidoActual : unaFecha.getPartidos()) {
 				if (indiceArbitros < todosLosArbitros.size()) {						
-					revisarClubConArbitro(ret, partidoActual);
-					todosLosArbitros.get(indiceArbitros).setPremios(-2);
+					agregarClubArbitro(ret, partidoActual);
+					
+					todosLosArbitros.get(indiceArbitros).setPremios(1);
+					
+					agregarPartidosArbitros(todosLosArbitros, indiceArbitros, partidoActual);
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					
 					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
 				
 				else {					
-					indiceArbitros = 0;		
-					todosLosArbitros.get(indiceArbitros).setPremios(-2);
-					revisarClubConArbitro(ret, partidoActual);						
+					indiceArbitros = 0;	
+					
+					agregarPartidosArbitros(todosLosArbitros, indiceArbitros, partidoActual);
+					
+					agregarClubArbitro(ret, partidoActual);
+					
+					todosLosArbitros.get(indiceArbitros).setPremios(1);					
+					
 					ret.agregarArbitroSolucion(todosLosArbitros.get(indiceArbitros));
+					
 					todosLosArbitros.get(indiceArbitros)
 					.setAparicion(todosLosArbitros.get(indiceArbitros).getAparicion()+1);
+					
 					cantidadAparicionesArbitros.put(partidoActual.getEncuentro()[0], todosLosArbitros.get(indiceArbitros));
 					indiceArbitros++;
 				}
 			}
 		}
+		
 		return ret;
 	}
 
-	private void revisarClubConArbitro(Solucion ret, Partido partidoActual) {
+	private void agregarPartidosArbitros(ArrayList<Arbitro> todosLosArbitros, int indiceArbitros,
+			Partido partidoActual) {
+		todosLosArbitros.get(indiceArbitros).agregarApariciones(partidoActual.getEncuentro()[0]);
+		todosLosArbitros.get(indiceArbitros).agregarApariciones(partidoActual.getEncuentro()[1]);
+	}
+
+	private void agregarClubArbitro(Solucion ret, Partido partidoActual) {
 		if(cantidadAparicionesArbitros.containsKey(partidoActual.getEncuentro()[0])){
 			ret.agregarAparicionesClub(partidoActual.getEncuentro()[0]);
 		}

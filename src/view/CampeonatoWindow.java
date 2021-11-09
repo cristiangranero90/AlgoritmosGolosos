@@ -129,8 +129,6 @@ public class CampeonatoWindow implements Contract.View {
 		comboCriterio.setBounds(446, 101, 228, 23);
 		comboCriterio.addItem("Heuristica por apariciones");
 		comboCriterio.addItem("Heuristica por premiacion");
-		comboCriterio.addItem("Fuerza Bruta");
-		comboCriterio.addItem("Backtracking");
 		Opciones.add(comboCriterio);
 		
 		labelCriterio = new JLabel("Seleccione  criterio:");
@@ -278,23 +276,20 @@ public class CampeonatoWindow implements Contract.View {
 			final JPanel panelPartidosOtro = new JPanel();
 			panelPartidosOtro.setLayout(new GridLayout(10,10,2,2));			
 			
-			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {
-						
+			for (int j = 0; j<presentador.dameCantidadDePartidos(i); j++) {						
 				JLabel nueva = new JLabel(pedirNombrePartidos(i, j));
 				nueva.setHorizontalAlignment(SwingConstants.CENTER);
 				panelPartidosOtro.add(nueva);				
 			}
 			
 			atrasOtro.addActionListener(new ActionListener() {
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Calendario.revalidate();
 					tabsPanel.setComponentAt(1, Calendario);	
 					tabsPanel.repaint();
 					tabsPanel.revalidate();
-				}
-				
+				}				
 			});		
 			
 			botonFecha.addActionListener(new ActionListener() {
@@ -303,8 +298,7 @@ public class CampeonatoWindow implements Contract.View {
 					panelPartidosOtro.setVisible(true);				
 					tabsPanel.getComponentAt(1).setVisible(false);
 					tabsPanel.setComponentAt(1, panelPartidosOtro);
-					tabsPanel.revalidate();
-				
+					tabsPanel.revalidate();				
 				}
 		    });
 			panelPartidosOtro.add(atrasOtro);
