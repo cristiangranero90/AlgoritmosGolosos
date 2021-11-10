@@ -13,9 +13,22 @@ public class Fecha  {
 	}
 	
 	public boolean agregarPartido(Partido nuevo) {
-		return getPartidos().add(nuevo);
+		for(Partido part: getPartidos()) {
+			if (partidoRepetido(part,nuevo.getEncuentro()[0])||partidoRepetido(part,nuevo.getEncuentro()[1]));
+				throw new RuntimeException("no puede esta el mismo club dos veces en la misma fecha");	
+		}
+			
+		
+				return getPartidos().add(nuevo);
 	}
 	
+	private boolean partidoRepetido(Partido part, Club club) {
+		if (part.getEncuentro()[0].equals(club)||part.getEncuentro()[1].equals(club))
+			return true;
+		else
+			return false;
+	}
+
 	public int cantidadPartidos() {
 		return getPartidos().size();
 	}

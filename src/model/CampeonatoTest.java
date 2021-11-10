@@ -19,6 +19,7 @@ public class CampeonatoTest {
 		campeonato.agregarFechas(fecha);
 		campeonato.agregarArbitro(arbitro);
 		campeonato.asignarSolucion(solucion);
+		solucion.agregarArbitroSolucion(arbitro);
 		assertTrue(solucion.getArbitrosSeleccionados().contains(arbitro));
 		assertTrue(solucion.getAparicionesClub().containsKey(boca));
 	}

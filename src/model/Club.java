@@ -8,6 +8,8 @@ public class Club {
 	private HashMap<Arbitro, Integer> arbitros;
 	
 	public Club(String nombre){
+		if(nombre==null)
+			throw new RuntimeException ("ingresar un nombre valido");
 		setNombre(nombre);
 		arbitros = new HashMap<>();
 	}
@@ -25,6 +27,14 @@ public class Club {
 		}		
 	}
 	
+	public HashMap<Arbitro, Integer> getArbitros() {
+		return arbitros;
+	}
+
+	public void setArbitros(HashMap<Arbitro, Integer> arbitros) {
+		this.arbitros = arbitros;
+	}
+
 	public void agregarArbitro(Arbitro nuevo) {
 		if (!existeArbitro(nuevo)) {
 			arbitros.put(nuevo, 1);
