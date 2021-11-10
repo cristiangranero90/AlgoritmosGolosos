@@ -49,7 +49,7 @@ public class Presenter implements Contract.Presenter {
 			case "Heuristica por premiacion" : generarSolucion(new OrdenarPorPremiacion());
 			break;
 			
-			default : throw new RuntimeException("Elemento invalido. ");		
+			default : throw new RuntimeException("Elemento invalido. (Selected Combo Box) ");		
 		}		
 	}
 

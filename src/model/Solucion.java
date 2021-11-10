@@ -55,6 +55,13 @@ public class Solucion {
 			cantidadAparicionesClub.put(club, 1);
 		}
 	}
+	
+public void agregarAparicionesClub(Club club, Integer valor) {			
+		cantidadAparicionesClub.put(club, valor);		
+	}
+	
+	
+	
 	public int tamanoAparicionesArbitro() {
 		return cantidadAparicionesClub.size();
 	}
