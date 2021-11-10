@@ -11,13 +11,21 @@ public class CampeonatoTest {
 		Campeonato campeonato=new Campeonato();
 		Solucion solucion=new Solucion();
 		Arbitro arbitro=new Arbitro(1);
+		Arbitro arbitro2=new Arbitro(2);
+		Arbitro arbitro3=new Arbitro(3);
 		Club boca=new Club ("Boca");
 		Club river=new Club ("River");
 		Partido partido=new Partido(boca,river);
 		Fecha fecha=new Fecha(1);
+		solucion.agregarAparicionesClub(boca);
 		fecha.agregarPartido(partido);
 		campeonato.agregarFechas(fecha);
 		campeonato.agregarArbitro(arbitro);
+		campeonato.agregarArbitro(arbitro2);
+		campeonato.agregarArbitro(arbitro3);
+		solucion.agregarArbitroSolucion(arbitro);
+		solucion.agregarArbitroSolucion(arbitro2);
+		solucion.agregarArbitroSolucion(arbitro3);
 		campeonato.asignarSolucion(solucion);
 		solucion.agregarArbitroSolucion(arbitro);
 		assertTrue(solucion.getArbitrosSeleccionados().contains(arbitro));
@@ -159,11 +167,13 @@ public class CampeonatoTest {
 		Club boca=new Club("Boca");
 		Club river=new Club("River");
 		Solucion solucion=new Solucion();
-		
+		solucion.agregarArbitroSolucion(arb);
+		solucion.agregarArbitroSolucion(arb2);
 		Partido partido=new Partido(boca,river);
 		fecha.agregarPartido(partido);
 		campeonato.agregarFechas(fecha);
-		assertFalse(campeonato.arbitrosAsignados());
+		campeonato.asignarSolucion(solucion);
+		assertTrue(campeonato.arbitrosAsignados());
 		
 		
 	}
