@@ -1,7 +1,5 @@
 package model;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class OrdenarTest {
@@ -13,9 +11,6 @@ public class OrdenarTest {
 		arbitro.setAparicion(5);
 		arbitro2.setAparicion(4);
 		new OrdenarPorAparicion();
-		
-		
-		
 		
 	}
 

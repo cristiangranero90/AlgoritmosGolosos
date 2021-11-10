@@ -7,10 +7,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso2/gson-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso2/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso2/jcommon-1.0.17.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso2/jfreechart-1.0.14.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Lorenzo/git/CampeonatoGoloso2/json-simple-1.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="jfreechart-1.0.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

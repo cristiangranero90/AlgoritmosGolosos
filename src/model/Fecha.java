@@ -21,8 +21,9 @@ public class Fecha  {
 		
 				}
 		return getPartidos().add(nuevo);
-	}
+	}	
 	
+	@SuppressWarnings("unused")
 	private boolean partidoRepetido(Partido part, Club club) {
 		if (part.getEncuentro()[0].equals(club)||part.getEncuentro()[1].equals(club))
 			return true;

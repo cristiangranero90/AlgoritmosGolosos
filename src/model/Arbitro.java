@@ -3,9 +3,7 @@ package model;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Arbitro {
-
-	
+public class Arbitro {	
 
 	private Integer numeroDeArbitro;
 	private String nombreDeArbitro;	
@@ -13,22 +11,18 @@ public class Arbitro {
 	private int aparicion;
 	private int premios;
 	
-	public Arbitro(int arbitroNumero, String nombre) {
-		if(arbitroNumero<1 || nombre==null)
-			throw new RuntimeException ("Numero de arbitro deber ser positivo y nombre no debe ser vacio");
-		numeroDeArbitro = arbitroNumero;
-		nombreDeArbitro = nombre;
-		aparicion = 0;
+	public Arbitro(int arbitroNumero, String nombre) {		
+		setNumeroDeArbitro(arbitroNumero);
+		setNombreDeArbitro(nombre);
+		setAparicion(0);
 		aparicionesPorClub = new HashMap<>();	
 		premios = dameCondecoracionRandom();
 	}
 	
 	public Arbitro(int arbitroNumero) {
-		if(arbitroNumero<1)
-			throw new RuntimeException ("el numero de arbitro debe ser mayor a 0");
-		numeroDeArbitro = arbitroNumero;
-		nombreDeArbitro = "";
-		aparicion = 0;
+		setNumeroDeArbitro(arbitroNumero);
+		setNombreDeArbitro(" ");
+		setAparicion(0);
 		aparicionesPorClub = new HashMap<>();
 		premios = dameCondecoracionRandom();
 	}
@@ -56,6 +50,8 @@ public class Arbitro {
 	}
 
 	public void setNumeroDeArbitro(Integer numeroDeArbitro) {
+		if(numeroDeArbitro<0)
+			throw new RuntimeException ("Numero de arbitro debe ser cero o positivo");
 		this.numeroDeArbitro = numeroDeArbitro;
 	}
 
@@ -64,6 +60,9 @@ public class Arbitro {
 	}
 
 	public void setNombreDeArbitro(String nombreDeArbitro) {
+		if (nombreDeArbitro == null) {
+			throw new RuntimeException("El nombre del arbitro esta vacio o es invalido. ");
+		}
 		this.nombreDeArbitro = nombreDeArbitro;
 	}
 	public int getAparicion() {

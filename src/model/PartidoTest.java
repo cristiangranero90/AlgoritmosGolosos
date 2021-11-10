@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 public class PartidoTest {
 
 	@Test
@@ -16,6 +17,7 @@ public class PartidoTest {
 		Partido partido=new Partido(boca,river);
 		assertEquals(2,partido.cantidadAparicionesArbitro(arbitro));
 	}
+	
 	
 	@Test
 	public void existeClubEnPartidoTest() {

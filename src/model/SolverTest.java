@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+@SuppressWarnings(value = { "unused" })
 public class SolverTest {
 
 	@Test (expected= RuntimeException.class)
