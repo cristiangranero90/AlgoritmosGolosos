@@ -82,7 +82,7 @@ public class CampeonatoTest {
 		Fecha fecha1= new Fecha(1);
 		Fecha fecha2= new Fecha(2);
 		campeonato.agregarFechas(fecha1);campeonato.agregarFechas(fecha2);
-		assertEquals (fecha1,campeonato.dameFecha(1).);
+		assertEquals (fecha1,campeonato.dameFecha(0));
 		
 		
 	}

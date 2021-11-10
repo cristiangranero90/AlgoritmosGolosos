@@ -167,7 +167,7 @@ public class Campeonato implements Contract.model {
 	@Override
 	public Fecha dameFecha(int fechaNumero) {
 		controlFechas(fechaNumero);
-		return getFechas().;
+		return getFechas().get(fechaNumero);
 	}
 
 	@Override
