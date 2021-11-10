@@ -62,7 +62,6 @@ public class SolverTest {
 		
 		solver.resolver().getArbitrosSeleccionados().contains(arbitro);
 		assertTrue (solver.resolver().getArbitrosSeleccionados().contains(arbitro));
-		assertTrue(solver.resolver().getAparicionesClub().containsValue(1));
 		assertTrue(solver.resolver().getAparicionesClub().containsKey(boca));
 		
 		
