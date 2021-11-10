@@ -1,6 +1,9 @@
-package model;
+package tests;
 
 import org.junit.Test;
+
+import model.Arbitro;
+import model.OrdenarPorAparicion;
 
 public class OrdenarTest {
 

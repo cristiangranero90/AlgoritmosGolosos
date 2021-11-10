@@ -1,8 +1,12 @@
-package model;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import model.Arbitro;
+import model.Club;
+import model.Partido;
 
 @SuppressWarnings("unused")
 public class PartidoTest {

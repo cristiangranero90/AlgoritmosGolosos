@@ -1,8 +1,12 @@
-package model;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import model.Club;
+import model.Fecha;
+import model.Partido;
 
 public class FechaTest {
 
