@@ -34,7 +34,7 @@ public class Campeonato implements Contract.model {
 	
 	@Override
 	public void asignarSolucion(Solucion solucionGenerada) {
-		int indice = 1;
+		int indice = 0;
 		for(Fecha fecha : getFechas()) {			
 			for (Partido partidoActual : fecha.getPartidos()) {
 				partidoActual.setArbitro(solucionGenerada.dameArbitro(indice));

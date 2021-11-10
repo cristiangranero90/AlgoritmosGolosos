@@ -158,11 +158,14 @@ public class CampeonatoTest {
 		Fecha fecha=new Fecha(1);
 		Club boca=new Club("Boca");
 		Club river=new Club("River");
+		Solucion solucion=new Solucion();
 		
 		Partido partido=new Partido(boca,river);
 		fecha.agregarPartido(partido);
 		campeonato.agregarFechas(fecha);
 		assertFalse(campeonato.arbitrosAsignados());
+		
+		
 	}
 	
 	@Test
