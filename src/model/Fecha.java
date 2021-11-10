@@ -14,12 +14,13 @@ public class Fecha  {
 	
 	public boolean agregarPartido(Partido nuevo) {
 		for(Partido part: getPartidos()) {
-			if (partidoRepetido(part,nuevo.getEncuentro()[0])||partidoRepetido(part,nuevo.getEncuentro()[1]));
-				throw new RuntimeException("no puede esta el mismo club dos veces en la misma fecha");	
+			if (part.existeClubEnPartido(nuevo.getEncuentro()[0]) || part.existeClubEnPartido(nuevo.getEncuentro()[1])) {
+				throw new RuntimeException("no puede estar el mismo club dos veces en la misma fecha");	
 		}
-			
 		
-				return getPartidos().add(nuevo);
+		
+				}
+		return getPartidos().add(nuevo);
 	}
 	
 	private boolean partidoRepetido(Partido part, Club club) {

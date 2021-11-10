@@ -50,6 +50,13 @@ public class Partido {
 			throw new RuntimeException("El arbitro ingresado es invalido. ");
 		}
 	}
+	
+	public boolean existeClubEnPartido (Club club) {
+		if (encuentro[0].equals(club)||encuentro[1].equals(club))
+			return true;
+		else
+			return false;
+	}
 
 	public Arbitro getArbitro() {
 		return this.arbitro;

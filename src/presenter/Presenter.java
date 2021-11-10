@@ -21,8 +21,7 @@ public class Presenter implements Contract.Presenter {
 
 	@Override
 	public int dameCantidadFechas() {
-		return model.cantidadDeFechas();
-		
+		return model.cantidadDeFechas();		
 	}
 
 	@Override

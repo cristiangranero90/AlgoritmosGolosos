@@ -82,7 +82,7 @@ public class CampeonatoTest {
 		Fecha fecha1= new Fecha(1);
 		Fecha fecha2= new Fecha(2);
 		campeonato.agregarFechas(fecha1);campeonato.agregarFechas(fecha2);
-		assertEquals (fecha1,campeonato.dameFecha(1));
+		assertEquals (fecha1,campeonato.dameFecha(1).);
 		
 		
 	}
@@ -92,12 +92,11 @@ public class CampeonatoTest {
 		Club boca=new Club("Boca");
 		Club river=new Club("River");
 		Partido partido1=new Partido(boca,river);
-		Partido partido2=new Partido (boca,river);
 		Fecha fecha1= new Fecha(1);
 		fecha1.agregarPartido(partido1);
-		fecha1.agregarPartido(partido2);
 		
-		assertEquals (2, fecha1.cantidadPartidos());
+		
+		assertEquals (1, fecha1.cantidadPartidos());
 	}
 	
 	@Test 
@@ -163,7 +162,7 @@ public class CampeonatoTest {
 		Partido partido=new Partido(boca,river);
 		fecha.agregarPartido(partido);
 		campeonato.agregarFechas(fecha);
-		assertTrue(campeonato.arbitrosAsignados());
+		assertFalse(campeonato.arbitrosAsignados());
 	}
 	
 	@Test
