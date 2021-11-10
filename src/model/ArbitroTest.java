@@ -9,7 +9,7 @@ public class ArbitroTest {
 	
 	@Test (expected=RuntimeException.class)
 	public void crearArbitroNumNegativo () {
-		Arbitro arbitro=new Arbitro(0);
+		Arbitro arbitro=new Arbitro(-1);
 	}
 	
 	@Test (expected=RuntimeException.class)
