@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Arbitro {
 
+	
+
 	private Integer numeroDeArbitro;
 	private String nombreDeArbitro;	
 	private HashMap<Club, Integer> aparicionesPorClub;
@@ -12,6 +14,8 @@ public class Arbitro {
 	private int premios;
 	
 	public Arbitro(int arbitroNumero, String nombre) {
+		if(arbitroNumero<1 || nombre==null)
+			throw new RuntimeException ("Numero de arbitro deber ser positivo y nombre no debe ser vacio");
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = nombre;
 		aparicion = 0;
@@ -20,6 +24,8 @@ public class Arbitro {
 	}
 	
 	public Arbitro(int arbitroNumero) {
+		if(arbitroNumero<1)
+			throw new RuntimeException ("el numero de arbitro debe ser mayor a 0");
 		numeroDeArbitro = arbitroNumero;
 		nombreDeArbitro = "";
 		aparicion = 0;
@@ -42,7 +48,7 @@ public class Arbitro {
 
 	private int dameCondecoracionRandom() {
 		Random ran = new Random();
-		return ran.nextInt(1, 50);
+		return ran.nextInt(50);
 	}
 
 	public Integer getNumeroDeArbitro() {
@@ -77,6 +83,30 @@ public class Arbitro {
 
 	public HashMap<Club, Integer> getAparicionesPorClub() {
 		return aparicionesPorClub;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numeroDeArbitro == null) ? 0 : numeroDeArbitro.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Arbitro other = (Arbitro) obj;
+		if (numeroDeArbitro == null) {
+			if (other.numeroDeArbitro != null)
+				return false;
+		} else if (!numeroDeArbitro.equals(other.numeroDeArbitro))
+			return false;
+		return true;
 	}
 	
 	

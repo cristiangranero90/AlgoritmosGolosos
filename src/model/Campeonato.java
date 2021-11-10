@@ -106,13 +106,23 @@ public class Campeonato implements Contract.model {
 	}
 	
 	public boolean agregarFechas(Fecha nuevaFecha) {
+		validarFecha(nuevaFecha);
 		return getFechas().add(nuevaFecha);
 	}
 	
 	public boolean existeFecha(Fecha otraFecha) {
+		validarFecha(otraFecha);
+			
 		return getFechas().contains(otraFecha);
 	}
 	
+	private void validarFecha(Fecha otraFecha) {
+		if(otraFecha==null) {
+			throw new RuntimeException("fecha no valida");
+		}
+		
+	}
+
 	public ArrayList<Arbitro> getArbitrosDisponibles() {
 		if (this.arbitrosDisponibles != null) {
 			return (ArrayList<Arbitro>) arbitrosDisponibles;
@@ -129,7 +139,9 @@ public class Campeonato implements Contract.model {
 		return false;
 	}
 
-	public boolean existeArbitro(Arbitro nuevo) {		
+	public boolean existeArbitro(Arbitro nuevo) {
+		if(nuevo==null)
+			throw new RuntimeException("el arbitro no es valido");
 		return arbitrosDisponibles.contains(nuevo);
 	}
 	
@@ -143,12 +155,14 @@ public class Campeonato implements Contract.model {
 	}
 
 	@Override
-	public int cantidadDePartidos(int deFecha) {		
+	public int cantidadDePartidos(int deFecha) {	
+		controlFechas(deFecha);
 		return getFechas().get(deFecha).cantidadPartidos();
 	}
 
 	@Override
 	public Fecha dameFecha(int fechaNumero) {
+		controlFechas(fechaNumero);
 		return getFechas().get(fechaNumero);
 	}
 
@@ -161,7 +175,7 @@ public class Campeonato implements Contract.model {
 	@Override
 	public void generarArbitros(boolean nombres, int cantidad) {
 		if (!nombres) {
-			for (int i = 0; i < cantidad; i++) {
+			for (int i = 1; i < cantidad; i++) {
 				Arbitro nuevo = new Arbitro(i, "Sin nombre");
 				arbitrosDisponibles.add(nuevo);
 			}	
@@ -173,6 +187,13 @@ public class Campeonato implements Contract.model {
 				Arbitro nuevo = new Arbitro(i, nombresDisponibles.get(i));
 				arbitrosDisponibles.add(nuevo);
 			}
+		}
+			
+	}
+	
+	private void controlFechas(int fecha) {
+		if(fecha<0) {
+			throw new RuntimeException ("numero de fecha no puede ser menor a 0");
 		}
 			
 	}

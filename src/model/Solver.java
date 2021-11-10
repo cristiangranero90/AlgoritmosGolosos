@@ -79,8 +79,8 @@ public class Solver {
 	}
 	public void agregarAparicionesArbitro(Club club, Arbitro arbitro) {
 		
-		if (club == null) {
-			throw new RuntimeException("El arbitro ingresado no existe. ");
+		if (club == null || arbitro==null) {
+			throw new RuntimeException("El arbitro ingresado o el club no existe. ");
 		}
 		else {			
 			getAsignacionArbitros().put(club, arbitro);			
