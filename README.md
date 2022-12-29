@@ -5,5 +5,6 @@
 2. Swing UI
 3. Threads
 4. Java 11
+5. JUnit y Test doubles
 
 **Colaboradores:** Cristian Granero, Lorenzo Ortiz. Año 2021
